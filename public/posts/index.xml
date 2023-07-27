@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on AI交流</title>
-    <link>http://yhypt562.github.io/posts/</link>
+    <link>http://blog.tdcloux.xyz/posts/</link>
     <description>Recent content in Posts on AI交流</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Thu, 27 Jul 2023 10:55:29 +0800</lastBuildDate><atom:link href="http://yhypt562.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 27 Jul 2023 10:55:29 +0800</lastBuildDate><atom:link href="http://blog.tdcloux.xyz/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Chatgpt提示词教程</title>
-      <link>http://yhypt562.github.io/posts/chatgpt-02/</link>
+      <link>http://blog.tdcloux.xyz/posts/chatgpt-02/</link>
       <pubDate>Thu, 27 Jul 2023 10:55:29 +0800</pubDate>
       
-      <guid>http://yhypt562.github.io/posts/chatgpt-02/</guid>
+      <guid>http://blog.tdcloux.xyz/posts/chatgpt-02/</guid>
       <description>课程地址 https://www.deeplearning.ai/short-courses/chatgpt-prompt-engineering-for-developers/
 Guideline（提示指南） 在本课程中，您将练习两个提示原则及其相关策略，以便为大型语言模型编写有效的提示。
 设置 加载API密钥和相关的Python库。 import openai import os from dotenv import load_dotenv, find_dotenv _ = load_dotenv(find_dotenv()) openai.api_key = os.getenv(&amp;#39;OPENAI_API_KEY&amp;#39;) def get_completion(prompt, model=&amp;#34;gpt-3.5-turbo&amp;#34;): messages = [{&amp;#34;role&amp;#34;: &amp;#34;user&amp;#34;, &amp;#34;content&amp;#34;: prompt}] response = openai.ChatCompletion.create( model=model, messages=messages, temperature=0, # this is the degree of randomness of the model&amp;#39;s output ) return response.choices[0].message[&amp;#34;content&amp;#34;] 提示词原则 原则 1：编写清晰特定的说明
@@ -24,10 +24,10 @@ text = f&amp;#34;&amp;#34;&amp;#34; 您应该通过 \ 表达您希望模型执�
     
     <item>
       <title>ChatGPT原理——驾校“AI教练”教导学员</title>
-      <link>http://yhypt562.github.io/posts/chatpgt-01/</link>
+      <link>http://blog.tdcloux.xyz/posts/chatpgt-01/</link>
       <pubDate>Thu, 27 Jul 2023 08:50:29 +0800</pubDate>
       
-      <guid>http://yhypt562.github.io/posts/chatpgt-01/</guid>
+      <guid>http://blog.tdcloux.xyz/posts/chatpgt-01/</guid>
       <description>最近ChatGPT是非常火啊，我一个“爱学习的”大码程序员都怦然心动，来蹭热度了。我赶紧就把 OpenAI 以往的 GPT-N 系列论文又翻出来，认真领会大语言模型（Large Language Model）的强大之处。经过一个多月的认真研究，查阅了几十篇相关的论文，终于在写这篇文章之前，熟练掌握了26个英文字母。
 前段时间ChatGPT火起来后，就去看过很多大V的文章，简单了解了这个AI是咋回事。大部分人都在说GPT还是有很多不足，例如：
 回答无效问题：它只是根据之前的训练数据进行模式匹配和预测，随机抽取概率高的文字来回答，而没有真正理解人类想要的答案。 缺乏可解释性：它很难进行深入的逻辑推理或解决需要多步骤操作的问题。因此，对于这类问题，GPT-3的回答可能不准确或含糊。 提供虚假回答：它的训练数据中可能包含错误、虚假或误导性的信息，因此它可能会生成不准确或有误导性的回答。 内容偏见问题：如果在训练数据中接触到偏见或歧视性的内容，它可能在生成回答时重复或放大这些偏见。这可能导致生成具有偏见或不公平观点的回答。 这些问题是如何产生的呢？下面我们带着问题，一步一步来看ChatGPT具体如何来做的。
@@ -62,10 +62,10 @@ AI 教练
     
     <item>
       <title>CentOS7安装新版内核和开启BBR加速</title>
-      <link>http://yhypt562.github.io/posts/centos-bbr/</link>
+      <link>http://blog.tdcloux.xyz/posts/centos-bbr/</link>
       <pubDate>Thu, 27 Jul 2023 08:34:16 +0800</pubDate>
       
-      <guid>http://yhypt562.github.io/posts/centos-bbr/</guid>
+      <guid>http://blog.tdcloux.xyz/posts/centos-bbr/</guid>
       <description>设置安装内核 查看当前服务器的内核版本。
 uname -sr uname命令用于打印当前系统相关信息（内核版本号、硬件架构、主机名称和操作系统类型等）。
 -a或--all：显示全部的信息； -m或--machine：显示电脑类型； -n或-nodename：显示在网络上的主机名称； -r或--release：显示操作系统的发行编号； -s或--sysname：显示操作系统名称； -v：显示操作系统的版本； -p或--processor：输出处理器类型或&amp;#34;unknown&amp;#34;； -i或--hardware-platform：输出硬件平台或&amp;#34;unknown&amp;#34;； -o或--operating-system：输出操作系统名称； --help：显示帮助； --version：显示版本信息。 BBR内核要求是4.9+，通常来说你通过上面这个命令出来的内核版本是在3.几。接下来启用 ELRepo 仓库

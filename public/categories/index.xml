@@ -2,9 +2,9 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on AI交流</title>
-    <link>http://yhypt562.github.io/categories/</link>
+    <link>http://blog.tdcloux.xyz/categories/</link>
     <description>Recent content in Categories on AI交流</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh-CN</language><atom:link href="http://yhypt562.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <language>zh-CN</language><atom:link href="http://blog.tdcloux.xyz/categories/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>
