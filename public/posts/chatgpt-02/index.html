@@ -1,0 +1,1584 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>Chatgpt提示词教程 | AI交流</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="课程地址 https://www.deeplearning.ai/short-courses/chatgpt-prompt-engineering-for-developers/
+Guideline（提示指南） 在本课程中，您将练习两个提示原则及其相关策略，以便为大型语言模型编写有效的提示。
+设置 加载API密钥和相关的Python库。 import openai import os from dotenv import load_dotenv, find_dotenv _ = load_dotenv(find_dotenv()) openai.api_key = os.getenv(&#39;OPENAI_API_KEY&#39;) def get_completion(prompt, model=&#34;gpt-3.5-turbo&#34;): messages = [{&#34;role&#34;: &#34;user&#34;, &#34;content&#34;: prompt}] response = openai.ChatCompletion.create( model=model, messages=messages, temperature=0, # this is the degree of randomness of the model&#39;s output ) return response.choices[0].message[&#34;content&#34;] 提示词原则 原则 1：编写清晰特定的说明
+原则 2：给模型时间“思考”
+原则 1：编写清晰特定的说明 策略 1：使用特定的分隔符，清楚的指示出输入（指令和待处理的文本）的不同部分 分隔符可以是：
+​```, &#34;&#34;&#34;, &lt; &gt;, `&lt;tag&gt; &lt;/tag&gt;`, `:` 代码
+text = f&#34;&#34;&#34; 您应该通过 \ 表达您希望模型执行的操作 提供清晰且\ 尽可能具体。 \ 这将引导模型达到所需的输出，\ 并减少收到不相关\ 或不正确的反应。 不要混淆写一个 \ 通过编写简短提示来清除提示。 \ 在许多情况下，更长的提示更清晰 \ 和模型的上下文，这可能导致 \ 更详细和相关的输出。 &#34;&#34;&#34; prompt = f&#34;&#34;&#34; 总结由三重反引号分隔的文本 \ 成一个句子。 ​```{text}``` &#34;&#34;&#34; response = get_completion(prompt) print(response) 结果">
+    <meta name="generator" content="Hugo 0.115.4">
+    
+    
+    
+    
+      <meta name="robots" content="noindex, nofollow">
+    
+
+    
+<link rel="stylesheet" href="/ananke/css/main.min.css" >
+
+
+
+    
+    
+    
+      
+
+    
+
+    
+    
+    <meta property="og:title" content="Chatgpt提示词教程" />
+<meta property="og:description" content="课程地址 https://www.deeplearning.ai/short-courses/chatgpt-prompt-engineering-for-developers/
+Guideline（提示指南） 在本课程中，您将练习两个提示原则及其相关策略，以便为大型语言模型编写有效的提示。
+设置 加载API密钥和相关的Python库。 import openai import os from dotenv import load_dotenv, find_dotenv _ = load_dotenv(find_dotenv()) openai.api_key = os.getenv(&#39;OPENAI_API_KEY&#39;) def get_completion(prompt, model=&#34;gpt-3.5-turbo&#34;): messages = [{&#34;role&#34;: &#34;user&#34;, &#34;content&#34;: prompt}] response = openai.ChatCompletion.create( model=model, messages=messages, temperature=0, # this is the degree of randomness of the model&#39;s output ) return response.choices[0].message[&#34;content&#34;] 提示词原则 原则 1：编写清晰特定的说明
+原则 2：给模型时间“思考”
+原则 1：编写清晰特定的说明 策略 1：使用特定的分隔符，清楚的指示出输入（指令和待处理的文本）的不同部分 分隔符可以是：
+​```, &#34;&#34;&#34;, &lt; &gt;, `&lt;tag&gt; &lt;/tag&gt;`, `:` 代码
+text = f&#34;&#34;&#34; 您应该通过 \ 表达您希望模型执行的操作 提供清晰且\ 尽可能具体。 \ 这将引导模型达到所需的输出，\ 并减少收到不相关\ 或不正确的反应。 不要混淆写一个 \ 通过编写简短提示来清除提示。 \ 在许多情况下，更长的提示更清晰 \ 和模型的上下文，这可能导致 \ 更详细和相关的输出。 &#34;&#34;&#34; prompt = f&#34;&#34;&#34; 总结由三重反引号分隔的文本 \ 成一个句子。 ​```{text}``` &#34;&#34;&#34; response = get_completion(prompt) print(response) 结果" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://yhypt562.github.io/posts/chatgpt-02/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-07-27T10:55:29+08:00" />
+<meta property="article:modified_time" content="2023-07-27T10:55:29+08:00" />
+<meta itemprop="name" content="Chatgpt提示词教程">
+<meta itemprop="description" content="课程地址 https://www.deeplearning.ai/short-courses/chatgpt-prompt-engineering-for-developers/
+Guideline（提示指南） 在本课程中，您将练习两个提示原则及其相关策略，以便为大型语言模型编写有效的提示。
+设置 加载API密钥和相关的Python库。 import openai import os from dotenv import load_dotenv, find_dotenv _ = load_dotenv(find_dotenv()) openai.api_key = os.getenv(&#39;OPENAI_API_KEY&#39;) def get_completion(prompt, model=&#34;gpt-3.5-turbo&#34;): messages = [{&#34;role&#34;: &#34;user&#34;, &#34;content&#34;: prompt}] response = openai.ChatCompletion.create( model=model, messages=messages, temperature=0, # this is the degree of randomness of the model&#39;s output ) return response.choices[0].message[&#34;content&#34;] 提示词原则 原则 1：编写清晰特定的说明
+原则 2：给模型时间“思考”
+原则 1：编写清晰特定的说明 策略 1：使用特定的分隔符，清楚的指示出输入（指令和待处理的文本）的不同部分 分隔符可以是：
+​```, &#34;&#34;&#34;, &lt; &gt;, `&lt;tag&gt; &lt;/tag&gt;`, `:` 代码
+text = f&#34;&#34;&#34; 您应该通过 \ 表达您希望模型执行的操作 提供清晰且\ 尽可能具体。 \ 这将引导模型达到所需的输出，\ 并减少收到不相关\ 或不正确的反应。 不要混淆写一个 \ 通过编写简短提示来清除提示。 \ 在许多情况下，更长的提示更清晰 \ 和模型的上下文，这可能导致 \ 更详细和相关的输出。 &#34;&#34;&#34; prompt = f&#34;&#34;&#34; 总结由三重反引号分隔的文本 \ 成一个句子。 ​```{text}``` &#34;&#34;&#34; response = get_completion(prompt) print(response) 结果"><meta itemprop="datePublished" content="2023-07-27T10:55:29+08:00" />
+<meta itemprop="dateModified" content="2023-07-27T10:55:29+08:00" />
+<meta itemprop="wordCount" content="3080">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Chatgpt提示词教程"/>
+<meta name="twitter:description" content="课程地址 https://www.deeplearning.ai/short-courses/chatgpt-prompt-engineering-for-developers/
+Guideline（提示指南） 在本课程中，您将练习两个提示原则及其相关策略，以便为大型语言模型编写有效的提示。
+设置 加载API密钥和相关的Python库。 import openai import os from dotenv import load_dotenv, find_dotenv _ = load_dotenv(find_dotenv()) openai.api_key = os.getenv(&#39;OPENAI_API_KEY&#39;) def get_completion(prompt, model=&#34;gpt-3.5-turbo&#34;): messages = [{&#34;role&#34;: &#34;user&#34;, &#34;content&#34;: prompt}] response = openai.ChatCompletion.create( model=model, messages=messages, temperature=0, # this is the degree of randomness of the model&#39;s output ) return response.choices[0].message[&#34;content&#34;] 提示词原则 原则 1：编写清晰特定的说明
+原则 2：给模型时间“思考”
+原则 1：编写清晰特定的说明 策略 1：使用特定的分隔符，清楚的指示出输入（指令和待处理的文本）的不同部分 分隔符可以是：
+​```, &#34;&#34;&#34;, &lt; &gt;, `&lt;tag&gt; &lt;/tag&gt;`, `:` 代码
+text = f&#34;&#34;&#34; 您应该通过 \ 表达您希望模型执行的操作 提供清晰且\ 尽可能具体。 \ 这将引导模型达到所需的输出，\ 并减少收到不相关\ 或不正确的反应。 不要混淆写一个 \ 通过编写简短提示来清除提示。 \ 在许多情况下，更长的提示更清晰 \ 和模型的上下文，这可能导致 \ 更详细和相关的输出。 &#34;&#34;&#34; prompt = f&#34;&#34;&#34; 总结由三重反引号分隔的文本 \ 成一个句子。 ​```{text}``` &#34;&#34;&#34; response = get_completion(prompt) print(response) 结果"/>
+
+	
+  </head>
+
+  <body class="ma0 avenir bg-near-white">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="/" class="f3 fw2 hover-white no-underline white-90 dib">
+      
+        AI交流
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+      
+<div class="ananke-socials">
+  
+</div>
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  <article class="flex-l flex-wrap justify-between mw8 center ph3">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked">
+          
+        POSTS
+      </aside>
+      
+
+
+
+
+
+
+
+
+
+
+  <div id="sharing" class="mt3 ananke-socials">
+    
+  </div>
+
+
+      <h1 class="f1 athelas mt3 mb1">Chatgpt提示词教程</h1>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2023-07-27T10:55:29+08:00">July 27, 2023</time>
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><h1 id="课程地址">课程地址</h1>
+<p><a href="https://www.deeplearning.ai/short-courses/chatgpt-prompt-engineering-for-developers/">https://www.deeplearning.ai/short-courses/chatgpt-prompt-engineering-for-developers/</a></p>
+<h1 id="guideline提示指南">Guideline（提示指南）</h1>
+<p>在本课程中，您将练习两个提示原则及其相关策略，以便为大型语言模型编写有效的提示。</p>
+<h2 id="设置">设置</h2>
+<h3 id="加载api密钥和相关的python库">加载API密钥和相关的Python库。</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> openai
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> os
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> dotenv <span style="color:#f92672">import</span> load_dotenv, find_dotenv
+</span></span><span style="display:flex;"><span>_ <span style="color:#f92672">=</span> load_dotenv(find_dotenv())
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>openai<span style="color:#f92672">.</span>api_key  <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>getenv(<span style="color:#e6db74">&#39;OPENAI_API_KEY&#39;</span>)
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_completion</span>(prompt, model<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;gpt-3.5-turbo&#34;</span>):
+</span></span><span style="display:flex;"><span>    messages <span style="color:#f92672">=</span> [{<span style="color:#e6db74">&#34;role&#34;</span>: <span style="color:#e6db74">&#34;user&#34;</span>, <span style="color:#e6db74">&#34;content&#34;</span>: prompt}]
+</span></span><span style="display:flex;"><span>    response <span style="color:#f92672">=</span> openai<span style="color:#f92672">.</span>ChatCompletion<span style="color:#f92672">.</span>create(
+</span></span><span style="display:flex;"><span>        model<span style="color:#f92672">=</span>model,
+</span></span><span style="display:flex;"><span>        messages<span style="color:#f92672">=</span>messages,
+</span></span><span style="display:flex;"><span>        temperature<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>, <span style="color:#75715e"># this is the degree of randomness of the model&#39;s output</span>
+</span></span><span style="display:flex;"><span>    )
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> response<span style="color:#f92672">.</span>choices[<span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>message[<span style="color:#e6db74">&#34;content&#34;</span>]
+</span></span></code></pre></div><h2 id="提示词原则">提示词原则</h2>
+<ul>
+<li>
+<p><strong>原则 1：编写清晰特定的说明</strong></p>
+</li>
+<li>
+<p><strong>原则 2：给模型时间“思考”</strong></p>
+</li>
+</ul>
+<h3 id="原则-1编写清晰特定的说明">原则 1：编写清晰特定的说明</h3>
+<h4 id="策略-1使用特定的分隔符清楚的指示出输入指令和待处理的文本的不同部分">策略 1：使用特定的分隔符，清楚的指示出输入（指令和待处理的文本）的不同部分</h4>
+<p>分隔符可以是：</p>
+<pre tabindex="0"><code>​```, &#34;&#34;&#34;, &lt; &gt;, `&lt;tag&gt; &lt;/tag&gt;`, `:`
+</code></pre><p>代码</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>text <span style="color:#f92672">=</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">您应该通过 \ 表达您希望模型执行的操作
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">提供清晰且</span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span><span style="color:#e6db74">尽可能具体。 </span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span><span style="color:#e6db74">这将引导模型达到所需的输出，</span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span><span style="color:#e6db74">并减少收到不相关</span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span><span style="color:#e6db74">或不正确的反应。 不要混淆写一个 </span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span><span style="color:#e6db74">通过编写简短提示来清除提示。 </span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span><span style="color:#e6db74">在许多情况下，更长的提示更清晰 </span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span><span style="color:#e6db74">和模型的上下文，这可能导致 </span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span><span style="color:#e6db74">更详细和相关的输出。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>prompt <span style="color:#f92672">=</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">总结由三重反引号分隔的文本 </span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span><span style="color:#e6db74">成一个句子。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">​```</span><span style="color:#e6db74">{</span>text<span style="color:#e6db74">}</span><span style="color:#e6db74">```
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>response <span style="color:#f92672">=</span> get_completion(prompt)
+</span></span><span style="display:flex;"><span>print(response)
+</span></span></code></pre></div><p>结果</p>
+<pre tabindex="0"><code>提供清晰且尽可能具体的操作，这将引导模型达到所需的输出，并减少收到不相关或不正确的反应，不要混淆写一个通过编写简短提示来清除提示，在许多情况下，更长的提示更清晰和模型的上下文，这可能导致更详细和相关的输出。
+</code></pre><h4 id="策略-2结构化的输出">策略 2：结构化的输出</h4>
+<ul>
+<li>JSON, HTML</li>
+</ul>
+<p>代码</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>prompt1 <span style="color:#f92672">=</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">生成三个虚构书名的列表
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">与他们的作者和流派。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">使用以下键以 JSON 格式提供它们：
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">book_id、title、author、genre。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>response1 <span style="color:#f92672">=</span> get_completion(prompt1)
+</span></span><span style="display:flex;"><span>print(response1)
+</span></span></code></pre></div><p>结果</p>
+<pre tabindex="0"><code>
+1. {&#34;book_id&#34;: 1, &#34;title&#34;: &#34;暗夜之城&#34;, &#34;author&#34;: &#34;艾米丽·布朗&#34;, &#34;genre&#34;: &#34;奇幻&#34;}
+2. {&#34;book_id&#34;: 2, &#34;title&#34;: &#34;失落的星球&#34;, &#34;author&#34;: &#34;杰克·罗宾逊&#34;, &#34;genre&#34;: &#34;科幻&#34;}
+3. {&#34;book_id&#34;: 3, &#34;title&#34;: &#34;血色玫瑰&#34;, &#34;author&#34;: &#34;凯瑟琳·约翰逊&#34;, &#34;genre&#34;: &#34;悬疑&#34;}
+</code></pre><h4 id="策略-3要求模型检查条件是否满足">策略 3：要求模型检查条件是否满足</h4>
+<p>代码</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>text_1 <span style="color:#f92672">=</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">泡一杯茶很简单！ 首先，你需要得到一些</span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span><span style="color:#e6db74">水沸腾。 发生这种情况时，</span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span><span style="color:#e6db74">拿一个杯子，在里面放一个茶包。 一旦水是</span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span><span style="color:#e6db74">足够热，只需将其倒在茶包上即可。 </span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span><span style="color:#e6db74">让它静置一会儿，这样茶就可以陡峭了。 之后 </span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span><span style="color:#e6db74">几分钟，取出茶包。 如果你 </span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span><span style="color:#e6db74">喜欢，可以加点糖或者牛奶调味。 </span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span><span style="color:#e6db74">就是这样！ 你有一个美味的</span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span><span style="color:#e6db74">一杯茶来享受。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>prompt <span style="color:#f92672">=</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">您将获得由三重引号分隔的文本。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">如果它包含一系列指令，</span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span><span style="color:#e6db74">按照以下格式重写这些指令：
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">步骤1 - ...
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">第2步 - …
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">……
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">步骤 N - …
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">如果文本不包含指令序列，</span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span><span style="color:#e6db74">然后简单地写下“没有提供步骤。</span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"></span><span style="color:#ae81ff">\&#34;\&#34;\&#34;</span><span style="color:#e6db74">{</span>text_1<span style="color:#e6db74">}</span><span style="color:#ae81ff">\&#34;\&#34;\&#34;</span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>response <span style="color:#f92672">=</span> get_completion(prompt)
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#34;Completion for Text 1:&#34;</span>)
+</span></span><span style="display:flex;"><span>print(response)
+</span></span></code></pre></div><p>结果</p>
+<pre tabindex="0"><code>
+Completion for Text 1:
+步骤1 - 得到一些水并将其煮沸。
+第2步 - 取一个杯子并放入一个茶包。
+第3步 - 当水足够热时，将其倒在茶包上。
+第4步 - 让茶陡峭几分钟。
+第5步 - 取出茶包。
+第6步 - 如果需要，加入糖或牛奶调味。
+步骤7 - 现在你可以享受一杯美味的茶了！
+</code></pre><p>代码</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>text_2 <span style="color:#f92672">=</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">今天阳光灿烂，鸟儿们</span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span><span style="color:#e6db74">唱歌。 这是一个美好的一天去</span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span><span style="color:#e6db74">在公园里散步。 鲜花盛开，</span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span><span style="color:#e6db74">树木在微风中轻轻摇曳。 人们 </span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span><span style="color:#e6db74">出门在外，享受宜人的天气。 </span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span><span style="color:#e6db74">有的在野餐，有的在玩耍</span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span><span style="color:#e6db74">游戏或只是在草地上放松。 它是 </span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span><span style="color:#e6db74">完美的一天，花时间在户外，欣赏</span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span><span style="color:#e6db74">自然之美。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>prompt <span style="color:#f92672">=</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">您将获得由三重引号分隔的文本。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">如果它包含一系列指令，</span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span><span style="color:#e6db74">按照以下格式重写这些指令：
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">步骤1 - ...
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">第2步 - …
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">……
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">步骤 N - …
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">如果文本不包含指令序列，</span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span><span style="color:#e6db74">然后简单地写下“没有提供步骤。</span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"></span><span style="color:#ae81ff">\&#34;\&#34;\&#34;</span><span style="color:#e6db74">{</span>text_2<span style="color:#e6db74">}</span><span style="color:#ae81ff">\&#34;\&#34;\&#34;</span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>response <span style="color:#f92672">=</span> get_completion(prompt)
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#34;Completion for Text 2:&#34;</span>)
+</span></span><span style="display:flex;"><span>print(response)
+</span></span></code></pre></div><p>结果</p>
+<pre tabindex="0"><code>Completion for Text 2:
+没有提供步骤。
+</code></pre><h4 id="策略-4给几个样例提示">策略 4：给几个样例提示</h4>
+<p>代码</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>prompt <span style="color:#f92672">=</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">你的任务是以一致的风格回答。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&lt;child&gt;：教我耐心。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&lt;grandparent&gt;：雕刻最深的河流</span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span><span style="color:#e6db74">山谷从温和的泉水流出； 这 </span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span><span style="color:#e6db74">最伟大的交响乐源于一个音符； </span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span><span style="color:#e6db74">最复杂的挂毯始于一根单独的线。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&lt;child&gt;：教我韧性。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>response <span style="color:#f92672">=</span> get_completion(prompt)
+</span></span><span style="display:flex;"><span>print(response)
+</span></span></code></pre></div><p>结果</p>
+<pre tabindex="0"><code>&lt;grandparent&gt;：韧性就像是一棵树，需要经历风吹雨打才能成长得更加坚强。每一次挫折都是一次锻炼，只有坚持不懈地努力，才能在生命的道路上走得更远更稳健。
+</code></pre><h3 id="原则2给模型时间去思考">原则2：给模型时间去“思考”</h3>
+<h4 id="策略-1指定完成任务所需的步骤">策略 1：指定完成任务所需的步骤</h4>
+<h5 id="普通格式输出">普通格式输出</h5>
+<p>代码</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>text <span style="color:#f92672">=</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">在一个迷人的村庄里，杰克和吉尔兄妹踏上了</span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span><span style="color:#e6db74">从山顶取水的任务</span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span><span style="color:#e6db74">出色地。 当他们攀登时，欢快地歌唱，不幸</span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span><span style="color:#e6db74">被击中——杰克被一块石头绊倒并摔倒了</span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span><span style="color:#e6db74">下山，吉尔紧随其后。 </span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span><span style="color:#e6db74">尽管受到了轻微的打击，这对夫妇还是回到了家</span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span><span style="color:#e6db74">安慰的拥抱。 尽管发生了事故，</span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span><span style="color:#e6db74">他们的冒险精神丝毫未减，他们</span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span><span style="color:#e6db74">继续愉快地探索。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># example 1</span>
+</span></span><span style="display:flex;"><span>prompt_1 <span style="color:#f92672">=</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">执行以下操作：
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">1 - 总结以下文本，用 1 个句子用三重反引号分隔。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">2 - 将摘要翻译成法语。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">3 - 在法语摘要中列出每个名字。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">4 - 输出包含以下键的 json 对象：french_summary、num_names。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">用换行符分隔你的答案。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">文本：
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">​```</span><span style="color:#e6db74">{</span>text<span style="color:#e6db74">}</span><span style="color:#e6db74">```
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>response <span style="color:#f92672">=</span> get_completion(prompt_1)
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#34;Completion for prompt 1:&#34;</span>)
+</span></span><span style="display:flex;"><span>print(response)
+</span></span></code></pre></div><p>结果</p>
+<pre tabindex="0"><code>
+Completion for prompt 1:
+​```
+在一个迷人的村庄里，杰克和吉尔兄妹踏上了从山顶取水的任务出色地，但不幸被击中——杰克被一块石头绊倒并摔倒了下山，吉尔紧随其后，尽管受到了轻微的打击，这对夫妇还是回到了家安慰的拥抱，尽管发生了事故，他们的冒险精神丝毫未减，他们继续愉快地探索。
+​```
+Dans un charmant village, les frère et sœur Jack et Jill ont entrepris avec succès la tâche de prendre de l&#39;eau depuis le sommet de la montagne, mais ont malheureusement été frappés - Jack a trébuché sur une pierre et est tombé de la montagne, suivi de près par Jill, mais malgré des blessures légères, le couple est rentré chez eux pour un câlin réconfortant, et malgré l&#39;accident, leur esprit d&#39;aventure n&#39;a pas diminué d&#39;un iota, ils ont continué à explorer joyeusement.
+
+Noms: Jack, Jill.
+
+{
+  &#34;french_summary&#34;: &#34;Dans un charmant village, les frère et sœur Jack et Jill ont entrepris avec succès la tâche de prendre de l&#39;eau depuis le sommet de la montagne, mais ont malheureusement été frappés - Jack a trébuché sur une pierre et est tombé de la montagne, suivi de près par Jill, mais malgré des blessures légères, le couple est rentré chez eux pour un câlin réconfortant, et malgré l&#39;accident, leur esprit d&#39;aventure n&#39;a pas diminué d&#39;un iota, ils ont continué à explorer joyeusement.&#34;,
+  &#34;num_names&#34;: 2
+}
+</code></pre><h5 id="指定格式输出">指定格式输出</h5>
+<p>代码</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>prompt_2 <span style="color:#f92672">=</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">您的任务是执行以下操作：
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">1 - 用 1 句话总结以下由 &lt;&gt; 分隔的文本。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">2 - 将摘要翻译成法语。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">3 - 在法语摘要中列出每个名字。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">4 - 输出包含以下键的 json 对象：french_summary、num_names。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">使用以下格式：
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">文本：&lt;要总结的文本&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">摘要：&lt;摘要&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">翻译：&lt;摘要翻译&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">姓名：&lt;意大利语摘要中的姓名列表&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">输出 JSON：&lt;带有摘要和 num_names 的 json&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Text: &lt;</span><span style="color:#e6db74">{</span>text<span style="color:#e6db74">}</span><span style="color:#e6db74">&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>response <span style="color:#f92672">=</span> get_completion(prompt_2)
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">Completion for prompt 2:&#34;</span>)
+</span></span><span style="display:flex;"><span>print(response)
+</span></span></code></pre></div><p>结果</p>
+<pre tabindex="0"><code>Completion for prompt 2:
+摘要：杰克和吉尔兄妹在山上取水时发生了意外，但最终平安回家并继续探险。
+翻译：Jack et Jill, frère et sœur, ont eu un accident en montant chercher de l&#39;eau dans un charmant village, mais sont rentrés chez eux en sécurité et ont continué leur exploration avec un esprit d&#39;aventure intact.
+姓名：杰克、吉尔
+输出 JSON：{&#34;french_summary&#34;: &#34;Jack et Jill, frère et sœur, ont eu un accident en montant chercher de l&#39;eau dans un charmant village, mais sont rentrés chez eux en sécurité et ont continué leur exploration avec un esprit d&#39;aventure intact.&#34;, &#34;num_names&#34;: 2}
+</code></pre><h4 id="策略-2模型先制定自己的解决方案再得出结论">策略 2：模型先制定自己的解决方案，再得出结论</h4>
+<p>代码</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>prompt <span style="color:#f92672">=</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">判断学生的答案是否正确。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">问题：
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">我正在建造一个太阳能装置，我需要帮助来计算财务费用。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- 土地成本 100 美元/平方英尺
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- 我可以以 250 美元/平方英尺的价格购买太阳能电池板
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- 我协商了一份维护合同，每年将花费我 10 万美元，外加每平方英尺 10 美元
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">运营第一年的总成本是多少
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">作为平方英尺数的函数。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">学生的答案：
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">设 x 是以平方英尺为单位的安装尺寸。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">费用：
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">1.土地成本：100x
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">2.太阳能电池板成本：250x
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">3.维护费用：100,000+100x
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">总成本：100x + 250x + 100,000 + 100x = 450x + 100,000
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>response <span style="color:#f92672">=</span> get_completion(prompt)
+</span></span><span style="display:flex;"><span>print(response)
+</span></span></code></pre></div><p>结果</p>
+<pre tabindex="0"><code>学生的答案是正确的。
+</code></pre><blockquote>
+<p><strong>注意：同学的解法其实是不正确的。</strong></p>
+</blockquote>
+<blockquote>
+<p><strong>我们可以通过要求模型首先计算出自己的解决方案来解决这个问题。</strong></p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>prompt <span style="color:#f92672">=</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">您的任务是确定学生的解决方案是否正确。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">要解决此问题，请执行以下操作：
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- 首先，一步步的分析，找出你自己的答案，
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- 然后将你的答案与学生的答案进行比较，并评估学生的答案是否正确。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">先不判断学生的答案是否正确，直到你自己解决了这个问题。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">使用以下格式：
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">问题：
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">​```
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">在这里提问
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">​```
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">学生的答案：
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">​```
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">学生的答案在这里
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">​```
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">实际答案：
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">​```
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">在此处列出答案和你的解答的步骤
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">​```
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">学生的答案是否与刚刚计算的实际答案相同：
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">​```
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">是 或 不是
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">​```
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">学生的答案是否正确：
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">​```
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">正确 或 错误
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">​```
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">问题：
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">​```
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">我正在建造一个太阳能装置，我需要帮助来计算财务费用。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- 土地成本 100 美元/平方英尺
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- 我可以以 250 美元/平方英尺的价格购买太阳能电池板
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- 我协商了一份维护合同，每年将花费我 10 万美元，外加每平方英尺 10 美元
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">运营第一年的总成本与平方英尺数的关系是多少？
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">​```
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">学生的答案：
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">​```
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">设 x 是以平方英尺为单位的安装尺寸。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">费用：
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">1.土地成本：100x
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">2.太阳能电池板成本：250x
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">3.维护费用：100,000+100x
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">总成本：100x + 250x + 100,000 + 100x = 450x + 100,000
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">​```
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">实际解决答案：
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>response <span style="color:#f92672">=</span> get_completion(prompt)
+</span></span><span style="display:flex;"><span>print(response)
+</span></span></code></pre></div><p>结果</p>
+<pre tabindex="0"><code>
+正确的解决方案是：
+
+费用：
+1.土地成本：100x
+2.太阳能电池板成本：250x
+3.维护费用：100,000+10x
+总成本：100x + 250x + 100,000 + 10x = 360x + 100,000
+
+学生的答案是否与刚刚计算的实际答案相同：
+不是
+
+学生的答案是否正确：
+错误
+</code></pre><h2 id="模型局限性幻觉">模型局限性：幻觉</h2>
+<ul>
+<li>百度是一家真实的公司，产品名称不是真实的。</li>
+</ul>
+<p>例子</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>prompt <span style="color:#f92672">=</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">介绍一下百度公司的儿童智能牙刷V5
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>response <span style="color:#f92672">=</span> get_completion(prompt)
+</span></span><span style="display:flex;"><span>print(response)
+</span></span></code></pre></div><p>结果</p>
+<pre tabindex="0"><code>百度公司的儿童智能牙刷V5是一款专为儿童设计的智能牙刷，采用高品质的材料制作而成，具有多项智能功能。该牙刷配备了高精度传感器和智能算法，能够实时监测儿童刷牙的时间、频率、力度等数据，并通过手机APP进行数据分析和反馈，帮助家长更好地了解孩子的刷牙情况，及时纠正不良习惯。
+
+此外，百度儿童智能牙刷V5还具有可爱的外观设计和多种互动模式，如音乐模式、游戏模式等，能够吸引孩子的注意力，让刷牙变得更加有趣。同时，该牙刷还采用了柔软的刷毛和防水设计，保证孩子的口腔健康和安全。
+
+总之，百度儿童智能牙刷V5是一款功能强大、设计精美、安全可靠的儿童智能牙刷，能够帮助孩子养成良好的刷牙习惯，促进口腔健康。
+</code></pre><h1 id="iterative迭代提示开发">iterative(迭代提示开发)</h1>
+<p>在本课程中，您将迭代分析和完善您的提示，以从产品概况表中生成营销副本。</p>
+<h2 id="设置-1">设置</h2>
+<h3 id="加载api密钥和相关的python库-1">加载API密钥和相关的Python库。</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> openai
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> os
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> dotenv <span style="color:#f92672">import</span> load_dotenv, find_dotenv
+</span></span><span style="display:flex;"><span>_ <span style="color:#f92672">=</span> load_dotenv(find_dotenv())
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>openai<span style="color:#f92672">.</span>api_key  <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>getenv(<span style="color:#e6db74">&#39;OPENAI_API_KEY&#39;</span>)
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_completion</span>(prompt, model<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;gpt-3.5-turbo&#34;</span>):
+</span></span><span style="display:flex;"><span>    messages <span style="color:#f92672">=</span> [{<span style="color:#e6db74">&#34;role&#34;</span>: <span style="color:#e6db74">&#34;user&#34;</span>, <span style="color:#e6db74">&#34;content&#34;</span>: prompt}]
+</span></span><span style="display:flex;"><span>    response <span style="color:#f92672">=</span> openai<span style="color:#f92672">.</span>ChatCompletion<span style="color:#f92672">.</span>create(
+</span></span><span style="display:flex;"><span>        model<span style="color:#f92672">=</span>model,
+</span></span><span style="display:flex;"><span>        messages<span style="color:#f92672">=</span>messages,
+</span></span><span style="display:flex;"><span>        temperature<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>, <span style="color:#75715e"># this is the degree of randomness of the model&#39;s output</span>
+</span></span><span style="display:flex;"><span>    )
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> response<span style="color:#f92672">.</span>choices[<span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>message[<span style="color:#e6db74">&#34;content&#34;</span>]
+</span></span></code></pre></div><h2 id="从产品概况表中生成营销产品描述">从产品概况表中生成营销产品描述</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>fact_sheet_chair <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">概述
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- 美丽的中世纪办公家具系列的一部分，
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">包括文件柜、书桌、书柜、会议桌等。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- 外壳颜色和底座饰面的多种选择。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- 提供 10 种织物和 6 种皮革选项的塑料背面和正面装饰 (SWC-100) 或全装饰 (SWC-110)。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- 底漆选项有：不锈钢、哑光黑、亮白或镀铬。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- 椅子可带或不带扶手。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- 适用于家庭或企业环境。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- 符合合同使用条件。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">建造
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- 5 轮塑料涂层铝制底座。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- 气动座椅调节，便于升高/降低动作。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">方面
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- 宽度 53 厘米 | 20.87”
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- 深度 51 厘米 | 20.08”
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- 身高 80 厘米 | 31.50”
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- 座椅高度 44 厘米 | 17.32”
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- 座椅深度 41 厘米 | 16.14”
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">选项
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- 软地板或硬地板脚轮选项。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- 座椅泡沫密度的两种选择：
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  中（1.8 磅/立方英尺）或高（2.8 磅/立方英尺）
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- 无扶手或 8 位 PU 扶手
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">材料
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">壳基滑翔机
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- 带改性尼龙 PA6/PA66 涂层的铸铝。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- 外壳厚度：10 毫米。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">座位
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- HD36 泡沫
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">原产地
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- 意大利
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>prompt <span style="color:#f92672">=</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">你的任务是帮助营销团队，根据技术说明书，为产品创建用于零售网站进行销售的描述。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">请根据下面用三重反引号分隔的技术规范中提供的信息编写产品说明。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">技术规格: ```</span><span style="color:#e6db74">{</span>fact_sheet_chair<span style="color:#e6db74">}</span><span style="color:#e6db74">```
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>response <span style="color:#f92672">=</span> get_completion(prompt)
+</span></span><span style="display:flex;"><span>print(response)
+</span></span></code></pre></div><p>结果</p>
+<pre tabindex="0"><code>产品描述：
+
+这款美丽的中世纪办公家具系列包括文件柜、书桌、书柜、会议桌等，适用于家庭或企业环境。外壳颜色和底座饰面有多种选择，底漆选项有不锈钢、哑光黑、亮白或镀铬。椅子可带或不带扶手，座椅泡沫密度有两种选择：中（1.8 磅/立方英尺）或高（2.8 磅/立方英尺）。此外，还提供软地板或硬地板脚轮选项。
+
+这款产品的塑料背面和正面装饰有10种织物和6种皮革选项可供选择，也可以选择全装饰。座位采用HD36泡沫，座椅高度为44厘米，座椅深度为41厘米。座椅采用气动座椅调节，便于升高/降低动作。座椅的宽度为53厘米，深度为51厘米，身高为80厘米。
+
+这款产品的壳基滑翔机采用带改性尼龙PA6/PA66涂层的铸铝，外壳厚度为10毫米。此外，这款产品还提供无扶手或8位PU扶手的选择。这款产品符合合同使用条件，原产地为意大利。
+</code></pre><h2 id="问题-1文字太长">问题 1：文字太长</h2>
+<ul>
+<li>限制字/词/句子/字符的数量。</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>prompt <span style="color:#f92672">=</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">你的任务是帮助营销团队，根据技术说明书，为产品创建用于零售网站进行销售的描述。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">请根据下面用三重反引号分隔的技术规范中提供的信息编写产品说明。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">最多使用 50 个字。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">技术规格: ```</span><span style="color:#e6db74">{</span>fact_sheet_chair<span style="color:#e6db74">}</span><span style="color:#e6db74">```
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>response <span style="color:#f92672">=</span> get_completion(prompt)
+</span></span><span style="display:flex;"><span>print(response)
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#34;字数:&#34;</span> <span style="color:#f92672">+</span> str(len(response)))
+</span></span></code></pre></div><p>结果字数在50字左右</p>
+<pre tabindex="0"><code>中世纪办公家具系列，包括文件柜、书桌、书柜、会议桌等。多种颜色和装饰选项，适用于家庭或企业环境。座椅可升高/降低，可选软/硬地板脚轮和无/有扶手。意大利制造，符合合同使用条件。
+字数:88
+</code></pre><h2 id="问题-2-文本关注在错误的细节">问题 2. 文本关注在错误的细节</h2>
+<ul>
+<li>要求它关注在目标受众相关的方面。</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>prompt <span style="color:#f92672">=</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">你的任务是帮助营销团队，根据技术说明书，为产品创建用于零售网站进行销售的描述。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">请根据下面用三重反引号分隔的技术规范中提供的信息编写产品说明。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">该描述适用于家具零售商，因此在描述应该是技术性的，并着重于产品的制造材料。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">最多使用 50 个字。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">技术规格: ```</span><span style="color:#e6db74">{</span>fact_sheet_chair<span style="color:#e6db74">}</span><span style="color:#e6db74">```
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>response <span style="color:#f92672">=</span> get_completion(prompt)
+</span></span><span style="display:flex;"><span>print(response)
+</span></span></code></pre></div><p>结果输出明细比上面的有倾向性</p>
+<pre tabindex="0"><code>中世纪办公家具系列，包括文件柜、书桌、书柜、会议桌等。多种颜色和装饰选项，底漆可选不锈钢、哑光黑、亮白或镀铬。5轮塑料涂层铝制底座，气动座椅调节，座椅泡沫密度可选中或高。壳基滑翔机采用带改性尼龙PA6/PA66涂层的铸铝，座位采用HD36泡沫。适用于家庭或企业环境，原产地意大利。
+</code></pre><p>提示词添加了“在描述的末尾，添加上技术规范中的7个字符的产品ID。”</p>
+<pre tabindex="0"><code>prompt = f&#34;&#34;&#34;
+你的任务是帮助营销团队，根据技术说明书，为产品创建用于零售网站进行销售的描述。
+
+请根据下面用三重反引号分隔的技术规范中提供的信息编写产品说明。
+
+该描述适用于家具零售商，因此在描述应该是技术性的，并着重于产品的制造材料。
+
+在描述的末尾，添加上技术规范中的7个字符的产品ID。
+
+最多使用 50 个字。
+
+技术规格: ```{fact_sheet_chair}```
+&#34;&#34;&#34;
+response = get_completion(prompt)
+print(response)
+</code></pre><p>结果</p>
+<pre tabindex="0"><code>中世纪办公家具系列，包括文件柜、书桌、书柜、会议桌等。多种颜色和底座饰面选择，可选塑料或皮革装饰。底漆可选不锈钢、哑光黑、亮白或镀铬。适用于家庭或企业环境，符合合同使用条件。5轮塑料涂层铝制底座，气动座椅调节。选项包括软/硬地板脚轮、中/高密度座椅泡沫和有/无扶手。壳基滑翔机采用改性尼龙PA6/PA66涂层的铸铝，座位采用HD36泡沫。意大利制造。产品ID：SWC-100。
+</code></pre><h2 id="问题-3-描述需要一个尺寸表">问题 3. 描述需要一个尺寸表</h2>
+<ul>
+<li>要求它提取信息并将其填充到表格中。</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>prompt <span style="color:#f92672">=</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">你的任务是帮助营销团队，根据技术说明书，为产品创建用于零售网站进行销售的描述。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">请根据下面用三重反引号分隔的技术规范中提供的信息编写产品说明。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">该描述适用于家具零售商，因此在描述应该是技术性的，并着重于产品的制造材料。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">在描述的末尾，添加上技术规范中的7个字符的产品ID。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">在描述之后，添加一个给出产品尺寸的表格。 该表应该有两列。在第一列中包含尺寸的名称。 在第二列中仅包含以英寸为单位的测量值。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">为表命名为“产品尺寸”。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">将所有内容格式化为可用于网站的 HTML。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">将描述放在一个 &lt;div&gt; 元素中。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">技术规格: ```</span><span style="color:#e6db74">{</span>fact_sheet_chair<span style="color:#e6db74">}</span><span style="color:#e6db74">```
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>response <span style="color:#f92672">=</span> get_completion(prompt)
+</span></span><span style="display:flex;"><span>print(response)
+</span></span></code></pre></div><blockquote>
+<p><strong>结果展示</strong></p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">p</span>&gt;这款家具是美丽的中世纪办公家具系列的一部分，包括文件柜、书桌、书柜、会议桌等。它适用于家庭或企业环境，符合合同使用条件。&lt;/<span style="color:#f92672">p</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">ul</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">li</span>&gt;外壳颜色和底座饰面的多种选择。&lt;/<span style="color:#f92672">li</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">li</span>&gt;提供 10 种织物和 6 种皮革选项的塑料背面和正面装饰 (SWC-100) 或全装饰 (SWC-110)。&lt;/<span style="color:#f92672">li</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">li</span>&gt;底漆选项有：不锈钢、哑光黑、亮白或镀铬。&lt;/<span style="color:#f92672">li</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">li</span>&gt;椅子可带或不带扶手。&lt;/<span style="color:#f92672">li</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;/<span style="color:#f92672">ul</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">p</span>&gt;这款家具的壳基滑翔机是带改性尼龙 PA6/PA66 涂层的铸铝，外壳厚度为10毫米。座位是HD36泡沫。它的底座是5轮塑料涂层铝制底座，具有气动座椅调节，便于升高/降低动作。&lt;/<span style="color:#f92672">p</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">p</span>&gt;这款家具有以下选项：&lt;/<span style="color:#f92672">p</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">ul</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">li</span>&gt;软地板或硬地板脚轮选项。&lt;/<span style="color:#f92672">li</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">li</span>&gt;座椅泡沫密度的两种选择：中（1.8 磅/立方英尺）或高（2.8 磅/立方英尺）。&lt;/<span style="color:#f92672">li</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">li</span>&gt;无扶手或8位PU扶手。&lt;/<span style="color:#f92672">li</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;/<span style="color:#f92672">ul</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">p</span>&gt;产品ID：SWC-110&lt;/<span style="color:#f92672">p</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">table</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">caption</span>&gt;产品尺寸&lt;/<span style="color:#f92672">caption</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">tr</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">th</span>&gt;尺寸名称&lt;/<span style="color:#f92672">th</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">th</span>&gt;测量值（英寸）&lt;/<span style="color:#f92672">th</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;/<span style="color:#f92672">tr</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">tr</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">td</span>&gt;宽度&lt;/<span style="color:#f92672">td</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">td</span>&gt;20.87&lt;/<span style="color:#f92672">td</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;/<span style="color:#f92672">tr</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">tr</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">td</span>&gt;深度&lt;/<span style="color:#f92672">td</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">td</span>&gt;20.08&lt;/<span style="color:#f92672">td</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;/<span style="color:#f92672">tr</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">tr</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">td</span>&gt;身高&lt;/<span style="color:#f92672">td</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">td</span>&gt;31.50&lt;/<span style="color:#f92672">td</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;/<span style="color:#f92672">tr</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">tr</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">td</span>&gt;座椅高度&lt;/<span style="color:#f92672">td</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">td</span>&gt;17.32&lt;/<span style="color:#f92672">td</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;/<span style="color:#f92672">tr</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">tr</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">td</span>&gt;座椅深度&lt;/<span style="color:#f92672">td</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">td</span>&gt;16.14&lt;/<span style="color:#f92672">td</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;/<span style="color:#f92672">tr</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">table</span>&gt;
+</span></span></code></pre></div><blockquote>
+<p><strong>html显示效果</strong></p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> IPython.display <span style="color:#f92672">import</span> display, HTML
+</span></span><span style="display:flex;"><span>display(HTML(response))
+</span></span></code></pre></div><p>这款家具是美丽的中世纪办公家具系列的一部分，包括文件柜、书桌、书柜、会议桌等。它适用于家庭或企业环境，符合合同使用条件。</p>
+<ul>
+<li>外壳颜色和底座饰面的多种选择。</li>
+<li>提供 10 种织物和 6 种皮革选项的塑料背面和正面装饰 (SWC-100) 或全装饰 (SWC-110)。</li>
+<li>底漆选项有：不锈钢、哑光黑、亮白或镀铬。</li>
+<li>椅子可带或不带扶手。</li>
+</ul>
+<p>这款家具的壳基滑翔机是带改性尼龙 PA6/PA66 涂层的铸铝，外壳厚度为10毫米。座位是HD36泡沫。它的底座是5轮塑料涂层铝制底座，具有气动座椅调节，便于升高/降低动作。</p>
+<p>这款家具有以下选项：</p>
+<ul>
+<li>软地板或硬地板脚轮选项。</li>
+<li>座椅泡沫密度的两种选择：中（1.8 磅/立方英尺）或高（2.8 磅/立方英尺）。</li>
+<li>无扶手或8位PU扶手。</li>
+</ul>
+<p>产品ID：SWC-110</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:right">尺寸名称</th>
+<th style="text-align:right">测量值（英寸）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">宽度</td>
+<td style="text-align:right">20.87</td>
+</tr>
+<tr>
+<td style="text-align:right">深度</td>
+<td style="text-align:right">20.08</td>
+</tr>
+<tr>
+<td style="text-align:right">身高</td>
+<td style="text-align:right">31.50</td>
+</tr>
+<tr>
+<td style="text-align:right">座椅高度</td>
+<td style="text-align:right">17.32</td>
+</tr>
+<tr>
+<td style="text-align:right">座椅深度</td>
+<td style="text-align:right">16.14</td>
+</tr>
+</tbody>
+</table>
+<h1 id="summarizing总结">summarizing（总结)</h1>
+<p>在本课程中，您将以特定主题的重点进行总结文本。</p>
+<h2 id="设置-2">设置</h2>
+<h3 id="加载api密钥和相关的python库-2">加载API密钥和相关的Python库。</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> openai
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> os
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> dotenv <span style="color:#f92672">import</span> load_dotenv, find_dotenv
+</span></span><span style="display:flex;"><span>_ <span style="color:#f92672">=</span> load_dotenv(find_dotenv())
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>openai<span style="color:#f92672">.</span>api_key  <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>getenv(<span style="color:#e6db74">&#39;OPENAI_API_KEY&#39;</span>)
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_completion</span>(prompt, model<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;gpt-3.5-turbo&#34;</span>):
+</span></span><span style="display:flex;"><span>    messages <span style="color:#f92672">=</span> [{<span style="color:#e6db74">&#34;role&#34;</span>: <span style="color:#e6db74">&#34;user&#34;</span>, <span style="color:#e6db74">&#34;content&#34;</span>: prompt}]
+</span></span><span style="display:flex;"><span>    response <span style="color:#f92672">=</span> openai<span style="color:#f92672">.</span>ChatCompletion<span style="color:#f92672">.</span>create(
+</span></span><span style="display:flex;"><span>        model<span style="color:#f92672">=</span>model,
+</span></span><span style="display:flex;"><span>        messages<span style="color:#f92672">=</span>messages,
+</span></span><span style="display:flex;"><span>        temperature<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>, <span style="color:#75715e"># this is the degree of randomness of the model&#39;s output</span>
+</span></span><span style="display:flex;"><span>    )
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> response<span style="color:#f92672">.</span>choices[<span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>message[<span style="color:#e6db74">&#34;content&#34;</span>]
+</span></span></code></pre></div><h2 id="给一段文字生成总结">给一段文字生成总结</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>prod_review <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">为我女儿的生日买了这个熊猫毛绒玩具，她很喜欢它，</span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span><span style="color:#e6db74">并且会带着它去任何地方。 它柔软而超级可爱，它的脸看起来很友善。 </span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span><span style="color:#e6db74">虽然我付出的代价有点小。 我认为同样的价格可能还有其他更大的选择。</span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span><span style="color:#e6db74">它比预期提前一天到达，所以在我把它送给她之前我必须自己玩它。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;</span>
+</span></span></code></pre></div><h2 id="给总结加上字数词语句子字符数限制">给总结加上字数/词语/句子/字符数限制</h2>
+<blockquote>
+<p><strong>代码</strong></p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>prompt <span style="color:#f92672">=</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">您的任务是生成来自电子商务网站的产品评论的简短摘要。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">总结下面用三个反引号分隔的评论，使用最多30个字。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">评论: ```</span><span style="color:#e6db74">{</span>prod_review<span style="color:#e6db74">}</span><span style="color:#e6db74">```
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>response <span style="color:#f92672">=</span> get_completion(prompt)
+</span></span><span style="display:flex;"><span>print(response)
+</span></span></code></pre></div><blockquote>
+<p><strong>结果</strong></p>
+</blockquote>
+<pre tabindex="0"><code>超级可爱的熊猫毛绒玩具，女儿喜欢带着它到处走。虽然价格有点小贵，但柔软友善的脸值得。提前一天到达，但我必须先玩它。
+</code></pre><h2 id="以运输和交付为重点进行总结">以运输和交付为重点进行总结</h2>
+<blockquote>
+<p><strong>代码</strong></p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>prompt <span style="color:#f92672">=</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">您的任务是生成来自电子商务网站的产品评论的简短摘要，</span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">该摘要需要向运输部门提供以作为反馈。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">总结下面用三个反引号分隔的评论，使用最多30个字。</span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">并重点关注提及产品运输和交付的任何方面。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">评论: ```</span><span style="color:#e6db74">{</span>prod_review<span style="color:#e6db74">}</span><span style="color:#e6db74">```
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>response <span style="color:#f92672">=</span> get_completion(prompt)
+</span></span><span style="display:flex;"><span>print(response)
+</span></span></code></pre></div><blockquote>
+<p><strong>结果</strong></p>
+</blockquote>
+<pre tabindex="0"><code>
+可爱的熊猫玩具，提前到达，但价格稍高。
+</code></pre><h2 id="以价格和价值为重点进行总结">以价格和价值为重点进行总结</h2>
+<blockquote>
+<p><strong>代码</strong></p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>prompt <span style="color:#f92672">=</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">您的任务是生成来自电子商务网站的产品评论的简短摘要，</span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">用于向负责确定产品价格的定价部门提供反馈。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">总结下面用三个反引号分隔的评论，使用最多30个字，</span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">并着重于与价格和感知价值相关的任何方面。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">评论: ```</span><span style="color:#e6db74">{</span>prod_review<span style="color:#e6db74">}</span><span style="color:#e6db74">```
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>response <span style="color:#f92672">=</span> get_completion(prompt)
+</span></span><span style="display:flex;"><span>print(response)
+</span></span></code></pre></div><blockquote>
+<p><strong>结果</strong></p>
+</blockquote>
+<pre tabindex="0"><code>柔软可爱，送女儿生日礼物不错，但价格稍高。 
+
+评论: ```
+这个电动牙刷真的很棒！它有多种模式，包括清洁，敏感和漂白。 它的电池寿命很长，而且充电很快。 它的价格比其他品牌高，但它的质量和效果绝对值得。 我的牙齿感觉更干净，更健康了。
+​```
+
+多种模式，电池寿命长，价格高但值得。 
+
+评论: ```
+这个手提包很漂亮，质量也很好。 它的大小适中，可以容纳我的钱包，手机和化妆品。 价格有点高，但我认为它的设计和材料使它看起来比其他手提包更高档。 我很喜欢它，每次使用都感觉很自信。
+​```
+
+漂亮质量好，适中大小，价格高但高档。
+</code></pre><h4 id="评论">评论</h4>
+<ul>
+<li>摘要包括与重点主题无关的主题。</li>
+</ul>
+<h2 id="尝试提取而不是总结">尝试“提取”而不是“总结”</h2>
+<p>代码</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>prompt <span style="color:#f92672">=</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">您的任务是从电子商务网站的产品评论中提取相关信息，</span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span><span style="color:#e6db74">以向运输部门提供反馈。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">从下面用三重引号分隔的评论中，提取与运输和交付相关的信息。 </span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span><span style="color:#e6db74">限制在30个字以内。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">评论: ```</span><span style="color:#e6db74">{</span>prod_review<span style="color:#e6db74">}</span><span style="color:#e6db74">```
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>response <span style="color:#f92672">=</span> get_completion(prompt)
+</span></span><span style="display:flex;"><span>print(response)
+</span></span></code></pre></div><p>结果</p>
+<pre tabindex="0"><code>交付提前一天到达，需要自己玩一下。
+</code></pre><h2 id="汇总多个产品评论">汇总多个产品评论</h2>
+<p>代码</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>review_1 <span style="color:#f92672">=</span> prod_review 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># review for a standing lamp</span>
+</span></span><span style="display:flex;"><span>review_2 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">我的卧室需要一盏漂亮的灯，这盏灯有额外的储物空间，而且价格不太高。 </span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span><span style="color:#e6db74">灯在2天内就就收到了。但是灯线在运输过程中断了，公司很高兴地送来了一根新的。 </span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span><span style="color:#e6db74">灯线也在几天之内送到了。 很方便的和灯接在一起。 </span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span><span style="color:#e6db74">然后我缺少了一部分，所以我联系了他们的支持，他们很快就帮我找到了丢失的部分！ </span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span><span style="color:#e6db74">在我看来，这是一家关心客户和产品的伟大公司。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># review for an electric toothbrush</span>
+</span></span><span style="display:flex;"><span>review_3 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">我的牙科保健员推荐了电动牙刷，这就是我买这个的原因。</span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span><span style="color:#e6db74">到目前为止，电池寿命似乎令人印象深刻。 </span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span><span style="color:#e6db74">在初次充电并在第一周保持充电器插入状态以调节电池后，</span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span><span style="color:#e6db74">我拔下充电器并在过去的 3 周内每天使用它刷牙两次，每次充电都是一样的。 </span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span><span style="color:#e6db74">但是牙刷头太小了。 我见过比这个还要大的婴儿牙刷。 </span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span><span style="color:#e6db74">我希望头部更大，刷毛长度不同，以便更好地进入牙齿之间，因为这个没有。 </span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span><span style="color:#e6db74">总的来说，如果你能在 50 美元左右买到这个，那还是很划算的。</span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span><span style="color:#e6db74">制造商的替换头非常昂贵，但您可以获得价格更合理的通用头。</span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span><span style="color:#e6db74">这把牙刷让我觉得我每天都去看牙医了。 我的牙齿感觉闪闪发光！
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># review for a blender</span>
+</span></span><span style="display:flex;"><span>review_4 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">因此，他们在 11 月份仍然以 49 美元左右的价格对 17 件商品进行季节性销售，</span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span><span style="color:#e6db74">效率大约减半，但由于某种原因（称之为价格欺诈），在 12 月的第二周左右，</span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span><span style="color:#e6db74">价格都上涨了，价格大约从上涨到了70-89 美元之间。 </span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span><span style="color:#e6db74">11 件商品的价格也比之前的 29 美元上涨了 10 美元左右。 </span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span><span style="color:#e6db74">商品它看起来还是不错，但是如果你看一下底座，刀片锁定到位的部分看起来不像几年前的以前版本那么好，</span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span><span style="color:#e6db74">但我使用刀片也是比较温和的，没有暴力使用的情况（例如，我 先在搅拌机中粉碎非常硬的东西，如豆子、冰、大米等，</span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span><span style="color:#e6db74">然后在搅拌机中将它们粉碎成我想要的份量，然后切换到搅打刀片以获得更细的面粉，</span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span><span style="color:#e6db74">并在制作冰沙时先使用横切刀片 ，然后如果我需要它们更细/更少浆状，请使用平刀片）。</span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span><span style="color:#e6db74">制作冰沙时的特别提示，切碎并冷冻您计划使用的水果和蔬菜（如果使用菠菜 - 稍微炖软菠菜，</span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span><span style="color:#e6db74">然后冷冻直至准备使用 - 如果制作冰糕，请使用中小型食品加工机） 这样你就可以避免在制作冰沙时添加太多冰块。 </span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span><span style="color:#e6db74">大约一年后，电机发出一种奇怪的声音。 我打电话给客户服务但保修已过期
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  已经，所以我不得不再买一个。 仅供参考：这些类型的产品的整体质量已经完成，</span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span><span style="color:#e6db74">  因此他们有点依赖品牌知名度和消费者忠诚度来维持销售。 大概两天就拿到了
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>reviews <span style="color:#f92672">=</span> [review_1, review_2, review_3, review_4]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(len(reviews)):
+</span></span><span style="display:flex;"><span>    prompt <span style="color:#f92672">=</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    您的任务是生成来自电子商务网站的产品评论的简短摘要。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    总结下面用三个反引号分隔的评论，使用最多20个字。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    评论: ```</span><span style="color:#e6db74">{</span>reviews[i]<span style="color:#e6db74">}</span><span style="color:#e6db74">```
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    response <span style="color:#f92672">=</span> get_completion(prompt)
+</span></span><span style="display:flex;"><span>    print(i, response, <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>    
+</span></span></code></pre></div><p>结果</p>
+<pre tabindex="0"><code>
+0 柔软可爱，女儿喜欢。 
+
+1 漂亮储物灯，服务好。 
+
+2 电动牙刷电池耐用，刷头小。 
+
+3 价格欺诈，质量一般。 
+</code></pre><h1 id="inferring推断">inferring(推断)</h1>
+<p>在本课程中，您将从产品评论和新闻中推断出态度和主题</p>
+<h2 id="设置-3">设置</h2>
+<h3 id="加载api密钥和相关的python库-3">加载API密钥和相关的Python库。</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> openai
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> os
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> dotenv <span style="color:#f92672">import</span> load_dotenv, find_dotenv
+</span></span><span style="display:flex;"><span>_ <span style="color:#f92672">=</span> load_dotenv(find_dotenv())
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>openai<span style="color:#f92672">.</span>api_key  <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>getenv(<span style="color:#e6db74">&#39;OPENAI_API_KEY&#39;</span>)
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_completion</span>(prompt, model<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;gpt-3.5-turbo&#34;</span>):
+</span></span><span style="display:flex;"><span>    messages <span style="color:#f92672">=</span> [{<span style="color:#e6db74">&#34;role&#34;</span>: <span style="color:#e6db74">&#34;user&#34;</span>, <span style="color:#e6db74">&#34;content&#34;</span>: prompt}]
+</span></span><span style="display:flex;"><span>    response <span style="color:#f92672">=</span> openai<span style="color:#f92672">.</span>ChatCompletion<span style="color:#f92672">.</span>create(
+</span></span><span style="display:flex;"><span>        model<span style="color:#f92672">=</span>model,
+</span></span><span style="display:flex;"><span>        messages<span style="color:#f92672">=</span>messages,
+</span></span><span style="display:flex;"><span>        temperature<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>, <span style="color:#75715e"># this is the degree of randomness of the model&#39;s output</span>
+</span></span><span style="display:flex;"><span>    )
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> response<span style="color:#f92672">.</span>choices[<span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>message[<span style="color:#e6db74">&#34;content&#34;</span>]
+</span></span></code></pre></div><h2 id="产品评论文本">产品评论文本</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>lamp_review <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">我的卧室需要一盏漂亮的灯，这盏灯有额外的储物空间，</span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span><span style="color:#e6db74">而且价格不太高。 很快就知道了。 我们的灯在运输过程中断了，</span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span><span style="color:#e6db74">公司很高兴地送来了一根新的。 几天之内也来了。 很容易放在一起。 </span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span><span style="color:#e6db74">我有一个缺失的部分，所以我联系了他们的支持，他们很快就帮我找到了缺失的部分！ </span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span><span style="color:#e6db74">在我看来，Lumina 是一家关心客户和产品的伟大公司！
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;</span>
+</span></span></code></pre></div><h2 id="情绪正面负面">情绪（正面/负面）</h2>
+<p>代码</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>prompt <span style="color:#f92672">=</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">以下用三重反引号分隔的产品评论的观点是什么？
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">评论文本: &#39;&#39;&#39;</span><span style="color:#e6db74">{</span>lamp_review<span style="color:#e6db74">}</span><span style="color:#e6db74">&#39;&#39;&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>response <span style="color:#f92672">=</span> get_completion(prompt)
+</span></span><span style="display:flex;"><span>print(response)
+</span></span></code></pre></div><p>结果</p>
+<pre tabindex="0"><code>这个评论的观点是这个灯很漂亮，价格不太高，有额外的储物空间。此外，这个客户对Lumina公司的客户服务和产品质量都非常满意。
+</code></pre><p>代码</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>prompt <span style="color:#f92672">=</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">以下用三重反引号分隔的产品评论的观点是什么？
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">用一个词给出你的答案，“肯定”或“否定”。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">评论文本: &#39;&#39;&#39;</span><span style="color:#e6db74">{</span>lamp_review<span style="color:#e6db74">}</span><span style="color:#e6db74">&#39;&#39;&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>response <span style="color:#f92672">=</span> get_completion(prompt)
+</span></span><span style="display:flex;"><span>print(response)
+</span></span></code></pre></div><p>结果</p>
+<pre tabindex="0"><code>肯定
+</code></pre><h2 id="识别情绪类型">识别情绪类型</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>prompt <span style="color:#f92672">=</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">确定以下评论的作者所表达的情绪，若有多种情绪，请一并列出来。 </span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span><span style="color:#e6db74">列表中包含的项目不超过五项。 </span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span><span style="color:#e6db74">将您的答案格式化为以逗号分隔的词语列表。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">评论文本: &#39;&#39;&#39;</span><span style="color:#e6db74">{</span>lamp_review<span style="color:#e6db74">}</span><span style="color:#e6db74">&#39;&#39;&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>response <span style="color:#f92672">=</span> get_completion(prompt)
+</span></span><span style="display:flex;"><span>print(response)
+</span></span></code></pre></div><p>结果</p>
+<pre tabindex="0"><code>满意,感激,赞扬
+</code></pre><h2 id="识别愤怒">识别愤怒</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>prompt <span style="color:#f92672">=</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">以下评论的作者是否表达了愤怒？</span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span><span style="color:#e6db74">评论是用三重反引号分隔的文本。</span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span><span style="color:#e6db74">给出是或否的答案。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">评论文本: &#39;&#39;&#39;</span><span style="color:#e6db74">{</span>lamp_review<span style="color:#e6db74">}</span><span style="color:#e6db74">&#39;&#39;&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>response <span style="color:#f92672">=</span> get_completion(prompt)
+</span></span><span style="display:flex;"><span>print(response)
+</span></span></code></pre></div><p>结果</p>
+<pre tabindex="0"><code>否
+</code></pre><h2 id="从客户评论中提取产品和公司名称">从客户评论中提取产品和公司名称</h2>
+<p>代码</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>prompt <span style="color:#f92672">=</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">从评论文本中识别以下项目：
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- 评论者购买的物品
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- 制造该物品的公司
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">评论文本是用三重反引号分隔的。</span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span><span style="color:#e6db74">将您的响应格式化为以“物品”和“品牌”为键的 JSON 对象。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">如果信息不存在，请使用“未知”作为值。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">确保你的回应尽可能简短。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">评论文本: &#39;&#39;&#39;</span><span style="color:#e6db74">{</span>lamp_review<span style="color:#e6db74">}</span><span style="color:#e6db74">&#39;&#39;&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>response <span style="color:#f92672">=</span> get_completion(prompt)
+</span></span><span style="display:flex;"><span>print(response)
+</span></span></code></pre></div><p>结果</p>
+<pre tabindex="0"><code>
+{
+  &#34;物品&#34;: &#34;灯&#34;,
+  &#34;品牌&#34;: &#34;Lumina&#34;
+}
+</code></pre><h2 id="一次执行多个任务">一次执行多个任务</h2>
+<p>代码</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>prompt <span style="color:#f92672">=</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">从评论文本中识别以下项目：
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- 情绪（正面或负面）
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- 审稿人是否表达了愤怒？ （有或无）
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- 评论者购买的物品
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- 制造该物品的公司
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">评论用三重反引号分隔。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">将您的响应格式化为 JSON 对象，以“情绪”、“愤怒”、“物品”和“品牌”作为键。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">如果信息不存在，请使用“未知”作为值。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">让你的回应尽可能简短。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">将 愤怒 值格式化为布尔值。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">评论文本: &#39;&#39;&#39;</span><span style="color:#e6db74">{</span>lamp_review<span style="color:#e6db74">}</span><span style="color:#e6db74">&#39;&#39;&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>response <span style="color:#f92672">=</span> get_completion(prompt)
+</span></span><span style="display:flex;"><span>print(response)
+</span></span></code></pre></div><p>结果</p>
+<pre tabindex="0"><code>
+{
+  &#34;情绪&#34;: &#34;正面&#34;,
+  &#34;愤怒&#34;: false,
+  &#34;物品&#34;: &#34;灯&#34;,
+  &#34;品牌&#34;: &#34;Lumina&#34;
+}
+</code></pre><h2 id="推断主题">推断主题</h2>
+<p>代码</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>story <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">在政府最近进行的一项调查中，公共部门员工被要求对他们工作的部门的满意度进行评分。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">结果显示，NASA 是最受欢迎的部门，满意度为 95%。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">美国宇航局的一名员工约翰·史密斯对调查结果发表了评论，他说：“我对美国宇航局名列前茅并不感到惊讶。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">这是与了不起的人一起工作并获得难以置信的机会的好地方。 我很自豪能成为这样一个创新组织的一员。”
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">这一结果也受到了 NASA 管理团队的欢迎，
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Tom Johnson 主任说：“我们很高兴听到我们的员工对他们在 NASA 的工作感到满意。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">我们拥有一支才华横溢、敬业奉献的团队，他们为实现我们的目标不懈努力，看到他们的辛勤工作得到回报真是太棒了。”
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">调查还显示，社会保障局的满意度最低，只有 45% 的员工表示对自己的工作感到满意。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">政府已承诺解决员工在调查中提出的担忧，并努力提高所有部门的工作满意度。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;</span>
+</span></span></code></pre></div><h2 id="推断-5-个主题">推断 5 个主题</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>prompt <span style="color:#f92672">=</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">确定以下由三个反引号分隔的文本中讨论的五个主题。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">确保每个主题长度在一两个词的长度。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">将你的回复格式化为以逗号分隔的主题列表。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">文本例子: &#39;&#39;&#39;</span><span style="color:#e6db74">{</span>story<span style="color:#e6db74">}</span><span style="color:#e6db74">&#39;&#39;&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>response <span style="color:#f92672">=</span> get_completion(prompt)
+</span></span><span style="display:flex;"><span>print(response)
+</span></span></code></pre></div><p>结果</p>
+<pre tabindex="0"><code>
+NASA, 调查结果, 美国宇航局员工, 社会保障局, 政府工作满意度
+</code></pre><h2 id="为某些主题制作新事件提醒">为某些主题制作新事件提醒</h2>
+<p>代码</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>topic_list <span style="color:#f92672">=</span> [
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;NASA&#34;</span>, <span style="color:#e6db74">&#34;本地政府&#34;</span>, <span style="color:#e6db74">&#34;工程&#34;</span>, 
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;员工满意度&#34;</span>, <span style="color:#e6db74">&#34;联邦政府&#34;</span>
+</span></span><span style="display:flex;"><span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>prompt <span style="color:#f92672">=</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">确定以下主题列表中的每一项是否是以下文本中的主题，</span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span><span style="color:#e6db74">该主题是由三个反引号分隔的文本。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">以列表的形式给出你的答案，每个主题用 0 或 1 表示。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">主题列表: </span><span style="color:#e6db74">{</span><span style="color:#e6db74">&#34;, &#34;</span><span style="color:#f92672">.</span>join(topic_list)<span style="color:#e6db74">}</span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">文本例子: &#39;&#39;&#39;</span><span style="color:#e6db74">{</span>story<span style="color:#e6db74">}</span><span style="color:#e6db74">&#39;&#39;&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>response <span style="color:#f92672">=</span> get_completion(prompt)
+</span></span><span style="display:flex;"><span>print(response)
+</span></span></code></pre></div><p>结果</p>
+<pre tabindex="0"><code>
+NASA: 1
+本地政府: 0
+工程: 0
+员工满意度: 1
+联邦政府: 1
+</code></pre><h1 id="transforming转换">Transforming（转换）</h1>
+<p>在本笔记本中，我们将探索如何使用大型语言模型进行文本转换任务，例如语言翻译、拼写和语法检查、语气调整和格式转换。</p>
+<h2 id="设置-4">设置</h2>
+<h3 id="加载api密钥和相关的python库-4">加载API密钥和相关的Python库。</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> openai
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> os
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> dotenv <span style="color:#f92672">import</span> load_dotenv, find_dotenv
+</span></span><span style="display:flex;"><span>_ <span style="color:#f92672">=</span> load_dotenv(find_dotenv())
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>openai<span style="color:#f92672">.</span>api_key  <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>getenv(<span style="color:#e6db74">&#39;OPENAI_API_KEY&#39;</span>)
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_completion</span>(prompt, model<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;gpt-3.5-turbo&#34;</span>):
+</span></span><span style="display:flex;"><span>    messages <span style="color:#f92672">=</span> [{<span style="color:#e6db74">&#34;role&#34;</span>: <span style="color:#e6db74">&#34;user&#34;</span>, <span style="color:#e6db74">&#34;content&#34;</span>: prompt}]
+</span></span><span style="display:flex;"><span>    response <span style="color:#f92672">=</span> openai<span style="color:#f92672">.</span>ChatCompletion<span style="color:#f92672">.</span>create(
+</span></span><span style="display:flex;"><span>        model<span style="color:#f92672">=</span>model,
+</span></span><span style="display:flex;"><span>        messages<span style="color:#f92672">=</span>messages,
+</span></span><span style="display:flex;"><span>        temperature<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>, <span style="color:#75715e"># this is the degree of randomness of the model&#39;s output</span>
+</span></span><span style="display:flex;"><span>    )
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> response<span style="color:#f92672">.</span>choices[<span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>message[<span style="color:#e6db74">&#34;content&#34;</span>]
+</span></span></code></pre></div><h2 id="翻译">翻译</h2>
+<p>ChatGPT 使用多种语言的资源进行训练。 这使模型能够进行翻译。 以下是如何使用此功能的一些示例。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>prompt <span style="color:#f92672">=</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">将以下英文文本翻译成西班牙文: \ 
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">​```Hi, I would like to order a blender```
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>response <span style="color:#f92672">=</span> get_completion(prompt)
+</span></span><span style="display:flex;"><span>print(response)
+</span></span></code></pre></div><pre tabindex="0"><code>
+Hola, me gustaría pedir una licuadora.
+</code></pre><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>prompt <span style="color:#f92672">=</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">告诉我这是什么语言: 
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">​```Combien coûte le lampadaire?```
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>response <span style="color:#f92672">=</span> get_completion(prompt)
+</span></span><span style="display:flex;"><span>print(response)
+</span></span></code></pre></div><pre tabindex="0"><code>这是法语。
+</code></pre><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>prompt <span style="color:#f92672">=</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">将以下文本翻译成法语、西班牙语和英式英语 </span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span><span style="color:#e6db74">​```I want to order a basketball```
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>response <span style="color:#f92672">=</span> get_completion(prompt)
+</span></span><span style="display:flex;"><span>print(response)
+</span></span></code></pre></div><pre tabindex="0"><code>
+法语：Je veux commander un ballon de basket-ball
+西班牙语：Quiero pedir una pelota de baloncesto
+英式英语：I want to order a basketball ball
+</code></pre><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>prompt <span style="color:#f92672">=</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">将以下文本以正式和非正式形式翻译成西班牙语: 
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;Would you like to order a pillow?&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>response <span style="color:#f92672">=</span> get_completion(prompt)
+</span></span><span style="display:flex;"><span>print(response)
+</span></span></code></pre></div><pre tabindex="0"><code>
+正式：¿Le gustaría ordenar una almohada?
+非正式：¿Quieres pedir una almohada?
+</code></pre><h3 id="通用翻译器">通用翻译器</h3>
+<p>想象一下，您在一家大型跨国电子商务公司负责 IT。 用户正在用他们所有的母语向您发送有关 IT 问题的消息。 您的员工来自世界各地，只说他们的母语。 你需要一个万能翻译器！</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>user_messages <span style="color:#f92672">=</span> [
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;La performance du système est plus lente que d&#39;habitude.&#34;</span>,  <span style="color:#75715e"># System performance is slower than normal         </span>
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;Mi monitor tiene píxeles que no se iluminan.&#34;</span>,              <span style="color:#75715e"># My monitor has pixels that are not lighting</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;Il mio mouse non funziona&#34;</span>,                                 <span style="color:#75715e"># My mouse is not working</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;Mój klawisz Ctrl jest zepsuty&#34;</span>,                             <span style="color:#75715e"># My keyboard has a broken control key</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;我的屏幕在闪烁&#34;</span>                                               <span style="color:#75715e"># My screen is flashing</span>
+</span></span><span style="display:flex;"><span>] 
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">for</span> issue <span style="color:#f92672">in</span> user_messages:
+</span></span><span style="display:flex;"><span>    prompt <span style="color:#f92672">=</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Tell me what language this is: ```</span><span style="color:#e6db74">{</span>issue<span style="color:#e6db74">}</span><span style="color:#e6db74">```&#34;</span>
+</span></span><span style="display:flex;"><span>    lang <span style="color:#f92672">=</span> get_completion(prompt)
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Original message (</span><span style="color:#e6db74">{</span>lang<span style="color:#e6db74">}</span><span style="color:#e6db74">): </span><span style="color:#e6db74">{</span>issue<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    prompt <span style="color:#f92672">=</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    Translate the following  text to English </span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span><span style="color:#e6db74">    and Korean: ```</span><span style="color:#e6db74">{</span>issue<span style="color:#e6db74">}</span><span style="color:#e6db74">```
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    response <span style="color:#f92672">=</span> get_completion(prompt)
+</span></span><span style="display:flex;"><span>    print(response, <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>)
+</span></span></code></pre></div><pre tabindex="0"><code>
+原始信息 (这是法语。): La performance du système est plus lente que d&#39;habitude.
+英文翻译：The system performance is slower than usual.
+韩文翻译：시스템 성능이 평소보다 느립니다. 
+
+原始信息 (这是西班牙语。): Mi monitor tiene píxeles que no se iluminan.
+英文翻译：My monitor has pixels that don&#39;t light up.
+韩文翻译：내 모니터에는 불이 켜지지 않는 픽셀이 있습니다. 
+
+原始信息 (这是意大利语。): Il mio mouse non funziona
+英文翻译：My mouse is not working.
+韩文翻译：내 마우스가 작동하지 않습니다. 
+
+原始信息 (这是波兰语。): Mój klawisz Ctrl jest zepsuty
+英文翻译：My Ctrl key is broken.
+韩文翻译：제 Ctrl 키가 고장 났습니다. 
+
+原始信息 (这是中文。): 我的屏幕在闪烁
+英文：My screen is flickering.
+韩文：내 화면이 깜빡입니다. 
+</code></pre><h2 id="音调转换">音调转换</h2>
+<p>写作可以根据目标受众而有所不同。 ChatGPT 可以产生不同的音调。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>prompt <span style="color:#f92672">=</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">将以下俚语翻译成商业信函: 
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;Dude, This is Joe, check out this spec on this standing lamp.&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>response <span style="color:#f92672">=</span> get_completion(prompt)
+</span></span><span style="display:flex;"><span>print(response)
+</span></span></code></pre></div><pre tabindex="0"><code>
+Dear Sir/Madam,
+
+I am writing to bring your attention to a standing lamp that I believe may be of interest to you. The specifications of this lamp are impressive and I believe it would make a great addition to your collection.
+
+Thank you for your time and consideration.
+
+Sincerely,
+
+Joe
+</code></pre><h2 id="格式转换">格式转换</h2>
+<p>ChatGPT 可以在格式之间进行转换。 提示给出描述的输入和输出格式。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>data_json <span style="color:#f92672">=</span> { <span style="color:#e6db74">&#34;resturant employees&#34;</span> :[ 
+</span></span><span style="display:flex;"><span>    {<span style="color:#e6db74">&#34;name&#34;</span>:<span style="color:#e6db74">&#34;Shyam&#34;</span>, <span style="color:#e6db74">&#34;email&#34;</span>:<span style="color:#e6db74">&#34;shyamjaiswal@gmail.com&#34;</span>},
+</span></span><span style="display:flex;"><span>    {<span style="color:#e6db74">&#34;name&#34;</span>:<span style="color:#e6db74">&#34;Bob&#34;</span>, <span style="color:#e6db74">&#34;email&#34;</span>:<span style="color:#e6db74">&#34;bob32@gmail.com&#34;</span>},
+</span></span><span style="display:flex;"><span>    {<span style="color:#e6db74">&#34;name&#34;</span>:<span style="color:#e6db74">&#34;Jai&#34;</span>, <span style="color:#e6db74">&#34;email&#34;</span>:<span style="color:#e6db74">&#34;jai87@gmail.com&#34;</span>}
+</span></span><span style="display:flex;"><span>]}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>prompt <span style="color:#f92672">=</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">将以下 Python 字典从 JSON 翻译成带有表头和标题的 HTML 表格: </span><span style="color:#e6db74">{</span>data_json<span style="color:#e6db74">}</span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>response <span style="color:#f92672">=</span> get_completion(prompt)
+</span></span><span style="display:flex;"><span>print(response)
+</span></span></code></pre></div><pre tabindex="0"><code>
+&lt;table&gt;
+  &lt;tr&gt;
+    &lt;th&gt;resturant employees&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;name&lt;/td&gt;
+    &lt;td&gt;email&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Shyam&lt;/td&gt;
+    &lt;td&gt;shyamjaiswal@gmail.com&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Bob&lt;/td&gt;
+    &lt;td&gt;bob32@gmail.com&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Jai&lt;/td&gt;
+    &lt;td&gt;jai87@gmail.com&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+</code></pre><h2 id="拼写检查语法检查">拼写检查/语法检查。</h2>
+<p>这里有一些常见的语法和拼写问题的例子以及法学硕士的回应。</p>
+<p>要向 LLM 发出您希望它校对您的文本的信号，您可以指示模型“校对”或“校对并更正”。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>text <span style="color:#f92672">=</span> [ 
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;The girl with the black and white puppies have a ball.&#34;</span>,  <span style="color:#75715e"># The girl has a ball.</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;Yolanda has her notebook.&#34;</span>, <span style="color:#75715e"># ok</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;Its going to be a long day. Does the car need it’s oil changed?&#34;</span>,  <span style="color:#75715e"># Homonyms</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;Their goes my freedom. There going to bring they’re suitcases.&#34;</span>,  <span style="color:#75715e"># Homonyms</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;Your going to need you’re notebook.&#34;</span>,  <span style="color:#75715e"># Homonyms</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;That medicine effects my ability to sleep. Have you heard of the butterfly affect?&#34;</span>, <span style="color:#75715e"># Homonyms</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;This phrase is to cherck chatGPT for speling abilitty&#34;</span>  <span style="color:#75715e"># spelling</span>
+</span></span><span style="display:flex;"><span>]
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> t <span style="color:#f92672">in</span> text:
+</span></span><span style="display:flex;"><span>    prompt <span style="color:#f92672">=</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;&#34;&#34;校对并更正以下文本并重写更正后的版本。 </span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span><span style="color:#e6db74">    如果您没有找到错误，只需说“未发现错误”。 </span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span><span style="color:#e6db74">    不要在文本周围使用任何标点符号:```</span><span style="color:#e6db74">{</span>t<span style="color:#e6db74">}</span><span style="color:#e6db74">```&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    response <span style="color:#f92672">=</span> get_completion(prompt)
+</span></span><span style="display:flex;"><span>    print(response)
+</span></span></code></pre></div><pre tabindex="0"><code>
+The girl with the black and white puppies has a ball. 
+
+重写后的版本： The girl who has black and white puppies is playing with a ball.
+未发现错误。
+未发现错误。
+
+重写后的版本：今天将是漫长的一天。汽车需要更换机油吗？
+更正后的版本： 
+
+There goes my freedom. They&#39;re going to bring their suitcases. 
+
+重写后的版本： 
+
+My freedom is slipping away. They&#39;re getting ready to bring their suitcases.
+你需要你的笔记本。
+
+重写后的版本：You&#39;re going to need your notebook.
+That medicine affects my ability to sleep. Have you heard of the butterfly effect? 
+
+重写后的版本： 
+
+我服用那种药会影响我的睡眠能力。你听说过蝴蝶效应吗？ 
+
+（注意：重写后的版本仅供参考，可能与原文意思略有不同。）
+未发现错误。
+
+重写后的版本： 
+
+如果您想检查自己的拼写能力，请使用这个短语： &#34;This phrase is to check chatGPT for spelling ability.&#34;
+</code></pre><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>text <span style="color:#f92672">=</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Got this for my daughter for her birthday cuz she keeps taking </span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span><span style="color:#e6db74">mine from my room.  Yes, adults also like pandas too.  She takes </span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span><span style="color:#e6db74">it everywhere with her, and it&#39;s super soft and cute.  One of the </span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span><span style="color:#e6db74">ears is a bit lower than the other, and I don&#39;t think that was </span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span><span style="color:#e6db74">designed to be asymmetrical. It&#39;s a bit small for what I paid for it </span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span><span style="color:#e6db74">though. I think there might be other options that are bigger for </span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span><span style="color:#e6db74">the same price.  It arrived a day earlier than expected, so I got </span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span><span style="color:#e6db74">to play with it myself before I gave it to my daughter.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>prompt <span style="color:#f92672">=</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;校对并更正此评论: ```</span><span style="color:#e6db74">{</span>text<span style="color:#e6db74">}</span><span style="color:#e6db74">```&#34;</span>
+</span></span><span style="display:flex;"><span>response <span style="color:#f92672">=</span> get_completion(prompt)
+</span></span><span style="display:flex;"><span>print(response)
+</span></span></code></pre></div><pre tabindex="0"><code>
+I got this for my daughter&#39;s birthday because she keeps taking mine from my room. Yes, even adults like pandas too. She takes it everywhere with her, and it&#39;s super soft and cute. However, one of the ears is a bit lower than the other, and I don&#39;t think that was designed to be asymmetrical. Also, it&#39;s a bit small for the price I paid. I think there might be other options that are bigger for the same price. On the positive side, it arrived a day earlier than expected, so I got to play with it myself before giving it to my daughter.
+</code></pre><h1 id="expanding扩展">Expanding（扩展）</h1>
+<p>在本课中，您将生成针对每位客户的评论量身定制的客户服务电子邮件。设置</p>
+<h3 id="加载api密钥和相关的python库-5">加载API密钥和相关的Python库。</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> openai
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> os
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> dotenv <span style="color:#f92672">import</span> load_dotenv, find_dotenv
+</span></span><span style="display:flex;"><span>_ <span style="color:#f92672">=</span> load_dotenv(find_dotenv())
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>openai<span style="color:#f92672">.</span>api_key  <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>getenv(<span style="color:#e6db74">&#39;OPENAI_API_KEY&#39;</span>)
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_completion</span>(prompt, model<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;gpt-3.5-turbo&#34;</span>):
+</span></span><span style="display:flex;"><span>    messages <span style="color:#f92672">=</span> [{<span style="color:#e6db74">&#34;role&#34;</span>: <span style="color:#e6db74">&#34;user&#34;</span>, <span style="color:#e6db74">&#34;content&#34;</span>: prompt}]
+</span></span><span style="display:flex;"><span>    response <span style="color:#f92672">=</span> openai<span style="color:#f92672">.</span>ChatCompletion<span style="color:#f92672">.</span>create(
+</span></span><span style="display:flex;"><span>        model<span style="color:#f92672">=</span>model,
+</span></span><span style="display:flex;"><span>        messages<span style="color:#f92672">=</span>messages,
+</span></span><span style="display:flex;"><span>        temperature<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>, <span style="color:#75715e"># this is the degree of randomness of the model&#39;s output</span>
+</span></span><span style="display:flex;"><span>    )
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> response<span style="color:#f92672">.</span>choices[<span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>message[<span style="color:#e6db74">&#34;content&#34;</span>]
+</span></span></code></pre></div><h2 id="自定义对客户电子邮件的自动回复">自定义对客户电子邮件的自动回复</h2>
+<h3 id="积极情绪">积极情绪</h3>
+<pre tabindex="0"><code># given the sentiment from the lesson on &#34;inferring&#34;,
+# and the original customer message, customize the email
+sentiment = &#34;积极&#34;
+
+# review for a blender
+review = f&#34;&#34;&#34;
+因此，他们在 11 月份仍然以 49 美元左右的价格对 17 件系统进行季节性销售，\
+大约减半，但由于某种原因（称之为价格欺诈），在 12 月的第二周左右，\
+价格都上涨了大约从 同一系统在 70-89 美元之间。
+11 件套系统的价格也比之前的 29 美元上涨了 10 美元左右。
+所以它看起来还不错，但是如果你看一下底座，刀片锁定到位的部分看起来不像几年前的以前版本那么好，\
+但我打算对它非常温和（例如，我 压碎非常坚硬的物品，例如豆子、冰块、大米等。
+首先在搅拌机中，然后在搅拌机中将它们粉碎成我想要的份量，然后切换到搅打刀片以获得更细的面粉，\
+并在制作冰沙时先使用横切刀片，如果我需要更细/更少的面粉，则使用平刀片 稀烂）。
+制作冰沙时的特别提示，切碎并冷冻您计划使用的水果和蔬菜（如果使用菠菜 - 稍微炖软菠菜，\
+然后冷冻直至准备使用 - 如果制作冰糕，请使用中小型食品加工机） 这样你就可以避免在制作冰沙时添加太多冰块。
+大约一年后，电机发出一种奇怪的声音。
+我打电话给客户服务，但保修期已经过期，所以我不得不再买一个。
+仅供参考：这些类型的产品的整体质量已经完成，\
+因此他们有点依赖品牌知名度和消费者忠诚度来维持销售。
+大概两天就拿到了
+&#34;&#34;&#34;
+
+prompt = f&#34;&#34;&#34;
+你是客服AI助理。
+您的任务是向尊贵的客户发送电子邮件回复。
+给定以```分隔的客户电子邮件，生成回复以感谢客户的评论。
+如果情绪是积极的或中立的，感谢他们的评论。
+如果情绪是负面的，请道歉并建议他们联系客户服务。
+确保使用评论中的具体细节。
+以简洁和专业的语气写作。
+将电子邮件签名为“AI 客户代理”。
+客户评论: ```{review}```
+评论情绪: {sentiment}
+&#34;&#34;&#34;
+response = get_completion(prompt)
+print(response)
+</code></pre><p>结果</p>
+<pre tabindex="0"><code>尊敬的客户，
+
+非常感谢您对我们产品的支持和评论。我们很高兴听到您对我们的搅拌机感到满意，并感谢您分享了您的使用技巧和经验。
+
+我们一直致力于提供高质量的产品和优质的客户服务，因此您的反馈对我们来说非常重要。我们将继续努力改进我们的产品和服务，以满足客户的需求和期望。
+
+再次感谢您的评论和支持。如果您有任何其他问题或需要帮助，请随时联系我们的客户服务团队。
+
+AI 客户代理
+</code></pre><h3 id="消极情绪">消极情绪</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># given the sentiment from the lesson on &#34;inferring&#34;,</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># and the original customer message, customize the email</span>
+</span></span><span style="display:flex;"><span>sentiment <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;消极&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># review for a blender</span>
+</span></span><span style="display:flex;"><span>review <span style="color:#f92672">=</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">因此，他们在 11 月份仍然以 49 美元左右的价格对 17 件系统进行季节性销售，</span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span><span style="color:#e6db74">大约减半，但由于某种原因（称之为价格欺诈），在 12 月的第二周左右，</span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span><span style="color:#e6db74">价格都上涨了大约从 同一系统在 70-89 美元之间。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">11 件套系统的价格也比之前的 29 美元上涨了 10 美元左右。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">所以它看起来还不错，但是如果你看一下底座，刀片锁定到位的部分看起来不像几年前的以前版本那么好，</span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span><span style="color:#e6db74">但我打算对它非常温和（例如，我 压碎非常坚硬的物品，例如豆子、冰块、大米等。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">首先在搅拌机中，然后在搅拌机中将它们粉碎成我想要的份量，然后切换到搅打刀片以获得更细的面粉，</span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span><span style="color:#e6db74">并在制作冰沙时先使用横切刀片，如果我需要更细/更少的面粉，则使用平刀片 稀烂）。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">制作冰沙时的特别提示，切碎并冷冻您计划使用的水果和蔬菜（如果使用菠菜 - 稍微炖软菠菜，</span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span><span style="color:#e6db74">然后冷冻直至准备使用 - 如果制作冰糕，请使用中小型食品加工机） 这样你就可以避免在制作冰沙时添加太多冰块。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">大约一年后，电机发出一种奇怪的声音。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">我打电话给客户服务，但保修期已经过期，所以我不得不再买一个。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">仅供参考：这些类型的产品的整体质量已经完成，</span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span><span style="color:#e6db74">因此他们有点依赖品牌知名度和消费者忠诚度来维持销售。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">大概两天就拿到了
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>prompt <span style="color:#f92672">=</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">你是客服AI助理。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">您的任务是向尊贵的客户发送电子邮件回复。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">给定以```分隔的客户电子邮件，生成回复以感谢客户的评论。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">如果情绪是积极的或中立的，感谢他们的评论。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">如果情绪是负面的，请道歉并建议他们联系客户服务。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">确保使用评论中的具体细节。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">以简洁和专业的语气写作。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">将电子邮件签名为“AI 客户代理”。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">客户评论: ```</span><span style="color:#e6db74">{</span>review<span style="color:#e6db74">}</span><span style="color:#e6db74">```
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">评论情绪: </span><span style="color:#e6db74">{</span>sentiment<span style="color:#e6db74">}</span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>response <span style="color:#f92672">=</span> get_completion(prompt)
+</span></span><span style="display:flex;"><span>print(response)
+</span></span></code></pre></div><pre tabindex="0"><code>
+尊敬的客户，
+
+非常感谢您对我们产品的评论。我们非常抱歉您在使用过程中遇到了问题。我们深刻理解您的不满和失望，并为此向您道歉。
+
+我们建议您联系我们的客户服务团队，以便我们能够更好地了解您的问题并提供更好的解决方案。我们将竭尽全力解决您的问题，并确保您对我们的服务感到满意。
+
+感谢您对我们的支持和信任。如果您有任何其他问题或疑虑，请随时与我们联系。
+
+祝您一切顺利。
+
+AI 客户代理
+</code></pre><h2 id="先判断评论是否消极然后再发邮件">先判断评论是否消极，然后再发邮件</h2>
+<h3 id="消极评论">消极评论</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># review for a blender</span>
+</span></span><span style="display:flex;"><span>review <span style="color:#f92672">=</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">产品太不行了，质量很差
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>prompt <span style="color:#f92672">=</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">你是客服AI助理。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">您的任务是向尊贵的客户发送电子邮件回复。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">给定以```分隔的客户电子邮件，生成回复以感谢客户的评论。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">先判断客户评论的情绪，
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">如果情绪是积极的或中立的，感谢他们的评论。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">如果情绪是负面的，请道歉并建议他们联系客户服务。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">确保使用评论中的具体细节。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">以简洁和专业的语气写作。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">将电子邮件签名为“AI 客户代理”。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">客户评论: ```</span><span style="color:#e6db74">{</span>review<span style="color:#e6db74">}</span><span style="color:#e6db74">```
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>response <span style="color:#f92672">=</span> get_completion(prompt)
+</span></span><span style="display:flex;"><span>print(response)
+</span></span></code></pre></div><pre tabindex="0"><code>
+尊敬的客户，
+
+非常感谢您对我们产品的评论。我们非常抱歉您对我们的产品质量感到失望。我们一直致力于提供高质量的产品和服务，但显然我们在这方面没有达到您的期望。
+
+我们建议您联系我们的客户服务团队，以便我们可以更好地了解您的问题，并尽快解决它们。我们将竭尽全力确保您对我们的产品和服务感到满意。
+
+再次感谢您的评论，我们期待着为您提供更好的服务。
+
+AI 客户代理
+</code></pre><h3 id="积极评论">积极评论</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># review for a blender</span>
+</span></span><span style="display:flex;"><span>review <span style="color:#f92672">=</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">产品非常好，质量也非常不错，下次还要来买
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>prompt <span style="color:#f92672">=</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">你是客服AI助理。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">您的任务是向尊贵的客户发送电子邮件回复。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">给定以```分隔的客户电子邮件，生成回复以感谢客户的评论。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">先判断客户评论的情绪，
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">如果情绪是积极的或中立的，感谢他们的评论。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">如果情绪是负面的，请道歉并建议他们联系客户服务。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">确保使用评论中的具体细节。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">以简洁和专业的语气写作。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">将电子邮件签名设置为“AI 客户代理”。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">客户评论: ```</span><span style="color:#e6db74">{</span>review<span style="color:#e6db74">}</span><span style="color:#e6db74">```
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>response <span style="color:#f92672">=</span> get_completion(prompt)
+</span></span><span style="display:flex;"><span>print(response)
+</span></span></code></pre></div><pre tabindex="0"><code>尊敬的客户，
+
+非常感谢您对我们产品的赞扬和支持。我们很高兴听到您对我们的产品质量印象深刻，并期待着在不久的将来再次为您服务。
+
+谢谢您的反馈，这对我们来说非常重要。我们一直在努力提高我们的产品和服务，以满足客户的需求和期望。如果您有任何其他问题或建议，请随时联系我们的客户服务团队，我们将竭诚为您服务。
+
+再次感谢您的支持和反馈。
+
+祝您一切顺利！
+
+AI 客户代理
+</code></pre><h2 id="提醒模型使用客户电子邮件中的详细信息">提醒模型使用客户电子邮件中的详细信息</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># review for a blender</span>
+</span></span><span style="display:flex;"><span>review <span style="color:#f92672">=</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">因此，他们在 11 月份仍然以 49 美元左右的价格对 17 件系统进行季节性销售，</span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span><span style="color:#e6db74">大约减半，但由于某种原因（称之为价格欺诈），在 12 月的第二周左右，</span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span><span style="color:#e6db74">价格都上涨了大约从 同一系统在 70-89 美元之间。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">11 件套系统的价格也比之前的 29 美元上涨了 10 美元左右。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">所以它看起来还不错，但是如果你看一下底座，刀片锁定到位的部分看起来不像几年前的以前版本那么好，</span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span><span style="color:#e6db74">但我打算对它非常温和（例如，我 压碎非常坚硬的物品，例如豆子、冰块、大米等。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">首先在搅拌机中，然后在搅拌机中将它们粉碎成我想要的份量，然后切换到搅打刀片以获得更细的面粉，</span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span><span style="color:#e6db74">并在制作冰沙时先使用横切刀片，如果我需要更细/更少的面粉，则使用平刀片 稀烂）。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">制作冰沙时的特别提示，切碎并冷冻您计划使用的水果和蔬菜（如果使用菠菜 - 稍微炖软菠菜，</span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span><span style="color:#e6db74">然后冷冻直至准备使用 - 如果制作冰糕，请使用中小型食品加工机） 这样你就可以避免在制作冰沙时添加太多冰块。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">大约一年后，电机发出一种奇怪的声音。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">我打电话给客户服务，但保修期已经过期，所以我不得不再买一个。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">仅供参考：这些类型的产品的整体质量已经完成，</span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span><span style="color:#e6db74">因此他们有点依赖品牌知名度和消费者忠诚度来维持销售。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">大概两天就拿到了
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">产品非常好，质量也非常不错，下次还要来买
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>prompt <span style="color:#f92672">=</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">你是客服AI助理。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">您的任务是向尊贵的客户发送电子邮件回复。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">给定以```分隔的客户电子邮件，生成回复以感谢客户的评论。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">如果情绪是积极的或中立的，感谢他们的评论。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">如果情绪是负面的，请道歉并建议他们联系客户服务。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">确保使用评论中的具体细节。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">以简洁和专业的语气写作。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">将电子邮件签名为“AI 客户代理”。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">客户评论: ```</span><span style="color:#e6db74">{</span>review<span style="color:#e6db74">}</span><span style="color:#e6db74">```
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>response <span style="color:#f92672">=</span> get_completion(prompt, temperature<span style="color:#f92672">=</span><span style="color:#ae81ff">0.7</span>)
+</span></span><span style="display:flex;"><span>print(response)
+</span></span></code></pre></div><pre tabindex="0"><code>尊敬的客户，
+
+非常感谢您对我们产品的评论。我们很高兴您对我们的搅拌机感到满意，并且您的使用建议非常有用。我们确实在产品质量上非常注重，以确保我们的客户可以使用高品质的产品。
+
+对于您所提到的价格上涨和质量问题，我们感到非常抱歉。我们会进一步调查，并确保这种情况不再发生。如果您有任何其他问题或需要帮助，请随时联系我们的客户服务，我们将竭诚为您服务。
+
+再次感谢您对我们的支持和反馈。
+
+AI 客户代理
+</code></pre><h1 id="the-chat-format聊天格式">The Chat Format（聊天格式）</h1>
+<p>在此笔记本中，您将探索如何利用聊天格式与聊天机器人进行个性化或专门针对特定任务或行为的扩展对话。</p>
+<ul class="pa0">
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://yhypt562.github.io/" >
+    &copy;  AI交流 2023 
+  </a>
+    <div>
+<div class="ananke-socials">
+  
+</div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>

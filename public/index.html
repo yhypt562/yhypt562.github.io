@@ -118,6 +118,36 @@
       
       <div class="blah w-100">
         <h1 class="f3 fw1 athelas mt0 lh-title">
+          <a href="/posts/chatgpt-02/" class="color-inherit dim link">
+            Chatgpt提示词教程
+            </a>
+        </h1>
+        <div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
+          课程地址 https://www.deeplearning.ai/short-courses/chatgpt-prompt-engineering-for-developers/
+Guideline（提示指南） 在本课程中，您将练习两个提示原则及其相关策略，以便为大型语言模型编写有效的提示。
+设置 加载API密钥和相关的Python库。 import openai import os from dotenv import load_dotenv, find_dotenv _ = load_dotenv(find_dotenv()) openai.api_key = os.getenv(&#39;OPENAI_API_KEY&#39;) def get_completion(prompt, model=&#34;gpt-3.5-turbo&#34;): messages = [{&#34;role&#34;: &#34;user&#34;, &#34;content&#34;: prompt}] response = openai.ChatCompletion.create( model=model, messages=messages, temperature=0, # this is the degree of randomness of the model&#39;s output ) return response.choices[0].message[&#34;content&#34;] 提示词原则 原则 1：编写清晰特定的说明
+原则 2：给模型时间“思考”
+原则 1：编写清晰特定的说明 策略 1：使用特定的分隔符，清楚的指示出输入（指令和待处理的文本）的不同部分 分隔符可以是：
+​```, &#34;&#34;&#34;, &lt; &gt;, `&lt;tag&gt; &lt;/tag&gt;`, `:` 代码
+text = f&#34;&#34;&#34; 您应该通过 \ 表达您希望模型执行的操作 提供清晰且\ 尽可能具体。 \ 这将引导模型达到所需的输出，\ 并减少收到不相关\ 或不正确的反应。 不要混淆写一个 \ 通过编写简短提示来清除提示。 \ 在许多情况下，更长的提示更清晰 \ 和模型的上下文，这可能导致 \ 更详细和相关的输出。 &#34;&#34;&#34; prompt = f&#34;&#34;&#34; 总结由三重反引号分隔的文本 \ 成一个句子。 ​```{text}``` &#34;&#34;&#34; response = get_completion(prompt) print(response) 结果
+        </div>
+          <a href="/posts/chatgpt-02/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+        
+      </div>
+    </div>
+  </div>
+</article>
+
+          </div>
+        
+          <div class="relative w-100 mb4">
+            
+<article class="bb b--black-10">
+  <div class="db pv4 ph3 ph0-l no-underline dark-gray">
+    <div class="flex flex-column flex-row-ns">
+      
+      <div class="blah w-100">
+        <h1 class="f3 fw1 athelas mt0 lh-title">
           <a href="/posts/chatpgt-01/" class="color-inherit dim link">
             ChatGPT原理——驾校“AI教练”教导学员
             </a>
