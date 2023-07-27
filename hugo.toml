@@ -1,4 +1,4 @@
-baseURL = 'http://blog.tdcloux.xyz/'
+baseURL = 'http://blog.tdcloud.xyz/'
 languageCode = 'zh-CN'
 title = 'AI交流'
 theme = 'ananke' 
