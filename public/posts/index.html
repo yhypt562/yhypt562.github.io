@@ -29,18 +29,18 @@
 
     
     
-      <link href="/index.xml" rel="alternate" type="application/rss+xml" title="AI交流" />
-      <link href="/index.xml" rel="feed" type="application/rss+xml" title="AI交流" />
+      <link href="/posts/index.xml" rel="alternate" type="application/rss+xml" title="AI交流" />
+      <link href="/posts/index.xml" rel="feed" type="application/rss+xml" title="AI交流" />
       
     
     
-    <meta property="og:title" content="AI交流" />
+    <meta property="og:title" content="Posts" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="http://yhypt562.github.io/" />
-<meta itemprop="name" content="AI交流">
+<meta property="og:url" content="http://yhypt562.github.io/posts/" />
+<meta itemprop="name" content="Posts">
 <meta itemprop="description" content=""><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="AI交流"/>
+<meta name="twitter:title" content="Posts"/>
 <meta name="twitter:description" content=""/>
 
 	
@@ -74,7 +74,7 @@
 
       <div class="tc-l pv3 ph3 ph4-ns">
         <h1 class="f2 f-subheadline-l fw2 light-silver mb0 lh-title">
-          AI交流
+          Posts
         </h1>
         
       </div>
@@ -84,46 +84,21 @@
 
     <main class="pb7" role="main">
       
- <article class="cf ph3 ph5-l pv3 pv4-l f4 tc-l center measure-wide lh-copy mid-gray">
-    
-  </article>
-  
-  
-  
-  
-  
-  
-  
-    
-    
-
-    <div class="pa3 pa4-ns w-100 w-70-ns center">
+  <article class="pa3 pa4-ns nested-copy-line-height">
+    <section class="cf ph3 ph5-l pv3 pv4-l f4 tc-l center measure-wide lh-copy mid-gray"></section>
+    <section class="flex-ns flex-wrap justify-around mt5">
       
-       
-          <h1 class="flex-none">
-            Recent Posts
-          </h1>
-        
-
-      
-
-      <section class="w-100 mw8">
-        
-        
-          <div class="relative w-100 mb4">
-            
-<article class="bb b--black-10">
-  <div class="db pv4 ph3 ph0-l no-underline dark-gray">
-    <div class="flex flex-column flex-row-ns">
-      
-      <div class="blah w-100">
-        <h1 class="f3 fw1 athelas mt0 lh-title">
-          <a href="/posts/chatpgt-01/" class="color-inherit dim link">
-            ChatGPT原理——驾校“AI教练”教导学员
-            </a>
-        </h1>
-        <div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
-          最近ChatGPT是非常火啊，我一个“爱学习的”大码程序员都怦然心动，来蹭热度了。我赶紧就把 OpenAI 以往的 GPT-N 系列论文又翻出来，认真领会大语言模型（Large Language Model）的强大之处。经过一个多月的认真研究，查阅了几十篇相关的论文，终于在写这篇文章之前，熟练掌握了26个英文字母。
+        <div class="relative w-100 w-30-l mb4 bg-white">
+          <div class="relative w-100 mb4 bg-white nested-copy-line-height">
+  <div class="bg-white mb3 pa4 gray overflow-hidden">
+    <span class="f6 db">Posts</span>
+    <h1 class="f3 near-black">
+      <a href="/posts/chatpgt-01/" class="link black dim">
+        ChatGPT原理——驾校“AI教练”教导学员
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      最近ChatGPT是非常火啊，我一个“爱学习的”大码程序员都怦然心动，来蹭热度了。我赶紧就把 OpenAI 以往的 GPT-N 系列论文又翻出来，认真领会大语言模型（Large Language Model）的强大之处。经过一个多月的认真研究，查阅了几十篇相关的论文，终于在写这篇文章之前，熟练掌握了26个英文字母。
 前段时间ChatGPT火起来后，就去看过很多大V的文章，简单了解了这个AI是咋回事。大部分人都在说GPT还是有很多不足，例如：
 回答无效问题：它只是根据之前的训练数据进行模式匹配和预测，随机抽取概率高的文字来回答，而没有真正理解人类想要的答案。 缺乏可解释性：它很难进行深入的逻辑推理或解决需要多步骤操作的问题。因此，对于这类问题，GPT-3的回答可能不准确或含糊。 提供虚假回答：它的训练数据中可能包含错误、虚假或误导性的信息，因此它可能会生成不准确或有误导性的回答。 内容偏见问题：如果在训练数据中接触到偏见或歧视性的内容，它可能在生成回答时重复或放大这些偏见。这可能导致生成具有偏见或不公平观点的回答。 这些问题是如何产生的呢？下面我们带着问题，一步一步来看ChatGPT具体如何来做的。
 为什么会有这样的问题？——无监督预训练（网上自学） 首先我们来看看为什么会出现这些问题，ChatGPT的核心是LLM，也就是大家常说到的大语言模型，而这种模型的核心就是为给定文本计算出后面出现的字的概率，举个通熟易懂的例子，如下：
@@ -153,30 +128,23 @@ AI 教练
 大家记得前几年轰动一时的围棋人工智能 AlphaGo吧，它是通过海量的自我对弈优化模型，最终超越人类；那我们能不能让 GPT也通过大量对话练习提升其回答问题的能力呢？答案是可以，但还缺少一个来判断好坏的裁判或是老师。
 对于AlphaGo下围棋来说，胜负是通过围棋的规则来决定；但 GPT 回答一个问题，那谁来告诉 GPT 回答的好坏呢？要是也用人来进行判断，那就回到了刚刚的问题，不可能全部答案都由人来进行判断。
 如果有个能辨别 GPT 回答好坏的“教练模型”（即 Reward 模型），并按照人类的评分标准对 GPT 所给出的答案进行评分，那不就能帮助 GPT 的回答更加符合人类的偏好了么？
-        </div>
-          <a href="/posts/chatpgt-01/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-        
-      </div>
     </div>
   </div>
-</article>
+</div>
 
-          </div>
-        
-          <div class="relative w-100 mb4">
-            
-<article class="bb b--black-10">
-  <div class="db pv4 ph3 ph0-l no-underline dark-gray">
-    <div class="flex flex-column flex-row-ns">
+        </div>
       
-      <div class="blah w-100">
-        <h1 class="f3 fw1 athelas mt0 lh-title">
-          <a href="/posts/centos-bbr/" class="color-inherit dim link">
-            CentOS7安装新版内核和开启BBR加速
-            </a>
-        </h1>
-        <div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
-          设置安装内核 查看当前服务器的内核版本。
+        <div class="relative w-100 w-30-l mb4 bg-white">
+          <div class="relative w-100 mb4 bg-white nested-copy-line-height">
+  <div class="bg-white mb3 pa4 gray overflow-hidden">
+    <span class="f6 db">Posts</span>
+    <h1 class="f3 near-black">
+      <a href="/posts/centos-bbr/" class="link black dim">
+        CentOS7安装新版内核和开启BBR加速
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      设置安装内核 查看当前服务器的内核版本。
 uname -sr uname命令用于打印当前系统相关信息（内核版本号、硬件架构、主机名称和操作系统类型等）。
 -a或--all：显示全部的信息； -m或--machine：显示电脑类型； -n或-nodename：显示在网络上的主机名称； -r或--release：显示操作系统的发行编号； -s或--sysname：显示操作系统名称； -v：显示操作系统的版本； -p或--processor：输出处理器类型或&#34;unknown&#34;； -i或--hardware-platform：输出硬件平台或&#34;unknown&#34;； -o或--operating-system：输出操作系统名称； --help：显示帮助； --version：显示版本信息。 BBR内核要求是4.9+，通常来说你通过上面这个命令出来的内核版本是在3.几。接下来启用 ELRepo 仓库
 rpm --import https://www.elrepo.org/RPM-GPG-KEY-elrepo.org rpm -Uvh https://www.elrepo.org/elrepo-release-7.0-3.el7.elrepo.noarch.rpm 然后安装新版的稳定版内核
@@ -186,22 +154,13 @@ kernel-3.10.0-862.14.4.el7.x86_64 kernel-ml-5.3.8-1.el7.elrepo.x86_64 kernel-3.1
 接下来需要设置系统启动顺序，使用下面的命令。
 sudo egrep ^menuentry /etc/grub2.cfg | cut -f 2 -d \&#39; 我的显示如下：
 CentOS Linux (5.3.8-1.el7.elrepo.x86_64) 7 (Core) CentOS Linux (3.10.0-1062.4.1.el7.x86_64) 7 (Core) CentOS Linux (3.
-        </div>
-          <a href="/posts/centos-bbr/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-        
-      </div>
     </div>
   </div>
-</article>
+</div>
 
-          </div>
-        
-      </section>
-
+        </div>
       
-
-      </div>
-  
+    </section></article>
 
     </main>
     <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">

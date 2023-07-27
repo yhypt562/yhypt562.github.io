@@ -1,7 +1,7 @@
 ---
 title: "CentOS7安装新版内核和开启BBR加速"
 date: 2023-07-27T08:34:16+08:00
-draft: true
+draft: false
 ---
 
 
