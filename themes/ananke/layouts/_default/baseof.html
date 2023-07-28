@@ -47,6 +47,7 @@
     {{ block "header" . }}{{ partial "site-header.html" .}}{{ end }}
     <main class="pb7" role="main">
       {{ block "main" . }}{{ end }}
+      {{ partial "reward.html" . }}
     </main>
     {{ block "footer" . }}{{ partialCached "site-footer.html" . }}{{ end }}
   </body>
