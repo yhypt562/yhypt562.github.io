@@ -6,16 +6,7 @@
     
     <title>CentOS7安装新版内核和开启BBR加速 | AI交流</title>
     <meta name="viewport" content="width=device-width,minimum-scale=1">
-    <meta name="description" content="设置安装内核 查看当前服务器的内核版本。
-uname -sr uname命令用于打印当前系统相关信息（内核版本号、硬件架构、主机名称和操作系统类型等）。
--a或--all：显示全部的信息； -m或--machine：显示电脑类型； -n或-nodename：显示在网络上的主机名称； -r或--release：显示操作系统的发行编号； -s或--sysname：显示操作系统名称； -v：显示操作系统的版本； -p或--processor：输出处理器类型或&#34;unknown&#34;； -i或--hardware-platform：输出硬件平台或&#34;unknown&#34;； -o或--operating-system：输出操作系统名称； --help：显示帮助； --version：显示版本信息。 BBR内核要求是4.9&#43;，通常来说你通过上面这个命令出来的内核版本是在3.几。接下来启用 ELRepo 仓库
-rpm --import https://www.elrepo.org/RPM-GPG-KEY-elrepo.org rpm -Uvh https://www.elrepo.org/elrepo-release-7.0-3.el7.elrepo.noarch.rpm 然后安装新版的稳定版内核
-yum --enablerepo=elrepo-kernel install kernel-ml -y 安装完毕后使用下面的命令查看是否安装成功。
-rpm -qa | grep kernel 我的显示如下：
-kernel-3.10.0-862.14.4.el7.x86_64 kernel-ml-5.3.8-1.el7.elrepo.x86_64 kernel-3.10.0-1062.4.1.el7.x86_64 kernel-headers-3.10.0-1062.4.1.el7.x86_64 kernel-3.10.0-957.5.1.el7.x86_64 kernel-3.10.0-1062.1.2.el7.x86_64 kernel-tools-3.10.0-1062.4.1.el7.x86_64 kernel-tools-libs-3.10.0-1062.4.1.el7.x86_64 kernel-3.10.0-957.1.3.el7.x86_64 里面kernel-ml-5.3.8-1.el7.elrepo.x86_64就是安装的新版版本内核（你看到这篇教程的时候可能内核版本有变化，随机应变）
-接下来需要设置系统启动顺序，使用下面的命令。
-sudo egrep ^menuentry /etc/grub2.cfg | cut -f 2 -d \&#39; 我的显示如下：
-CentOS Linux (5.3.8-1.el7.elrepo.x86_64) 7 (Core) CentOS Linux (3.10.0-1062.4.1.el7.x86_64) 7 (Core) CentOS Linux (3.">
+    <meta name="description" content="CentOS7安装新版内核和开启BBR加速">
     <meta name="generator" content="Hugo 0.115.4">
     
     
@@ -39,45 +30,18 @@ CentOS Linux (5.3.8-1.el7.elrepo.x86_64) 7 (Core) CentOS Linux (3.10.0-1062.4.1.
     
     
     <meta property="og:title" content="CentOS7安装新版内核和开启BBR加速" />
-<meta property="og:description" content="设置安装内核 查看当前服务器的内核版本。
-uname -sr uname命令用于打印当前系统相关信息（内核版本号、硬件架构、主机名称和操作系统类型等）。
--a或--all：显示全部的信息； -m或--machine：显示电脑类型； -n或-nodename：显示在网络上的主机名称； -r或--release：显示操作系统的发行编号； -s或--sysname：显示操作系统名称； -v：显示操作系统的版本； -p或--processor：输出处理器类型或&#34;unknown&#34;； -i或--hardware-platform：输出硬件平台或&#34;unknown&#34;； -o或--operating-system：输出操作系统名称； --help：显示帮助； --version：显示版本信息。 BBR内核要求是4.9&#43;，通常来说你通过上面这个命令出来的内核版本是在3.几。接下来启用 ELRepo 仓库
-rpm --import https://www.elrepo.org/RPM-GPG-KEY-elrepo.org rpm -Uvh https://www.elrepo.org/elrepo-release-7.0-3.el7.elrepo.noarch.rpm 然后安装新版的稳定版内核
-yum --enablerepo=elrepo-kernel install kernel-ml -y 安装完毕后使用下面的命令查看是否安装成功。
-rpm -qa | grep kernel 我的显示如下：
-kernel-3.10.0-862.14.4.el7.x86_64 kernel-ml-5.3.8-1.el7.elrepo.x86_64 kernel-3.10.0-1062.4.1.el7.x86_64 kernel-headers-3.10.0-1062.4.1.el7.x86_64 kernel-3.10.0-957.5.1.el7.x86_64 kernel-3.10.0-1062.1.2.el7.x86_64 kernel-tools-3.10.0-1062.4.1.el7.x86_64 kernel-tools-libs-3.10.0-1062.4.1.el7.x86_64 kernel-3.10.0-957.1.3.el7.x86_64 里面kernel-ml-5.3.8-1.el7.elrepo.x86_64就是安装的新版版本内核（你看到这篇教程的时候可能内核版本有变化，随机应变）
-接下来需要设置系统启动顺序，使用下面的命令。
-sudo egrep ^menuentry /etc/grub2.cfg | cut -f 2 -d \&#39; 我的显示如下：
-CentOS Linux (5.3.8-1.el7.elrepo.x86_64) 7 (Core) CentOS Linux (3.10.0-1062.4.1.el7.x86_64) 7 (Core) CentOS Linux (3." />
+<meta property="og:description" content="CentOS7安装新版内核和开启BBR加速" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://blog.tdcloud.xyz/posts/centos-bbr/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2023-07-27T08:34:16+08:00" />
 <meta property="article:modified_time" content="2023-07-27T08:34:16+08:00" />
 <meta itemprop="name" content="CentOS7安装新版内核和开启BBR加速">
-<meta itemprop="description" content="设置安装内核 查看当前服务器的内核版本。
-uname -sr uname命令用于打印当前系统相关信息（内核版本号、硬件架构、主机名称和操作系统类型等）。
--a或--all：显示全部的信息； -m或--machine：显示电脑类型； -n或-nodename：显示在网络上的主机名称； -r或--release：显示操作系统的发行编号； -s或--sysname：显示操作系统名称； -v：显示操作系统的版本； -p或--processor：输出处理器类型或&#34;unknown&#34;； -i或--hardware-platform：输出硬件平台或&#34;unknown&#34;； -o或--operating-system：输出操作系统名称； --help：显示帮助； --version：显示版本信息。 BBR内核要求是4.9&#43;，通常来说你通过上面这个命令出来的内核版本是在3.几。接下来启用 ELRepo 仓库
-rpm --import https://www.elrepo.org/RPM-GPG-KEY-elrepo.org rpm -Uvh https://www.elrepo.org/elrepo-release-7.0-3.el7.elrepo.noarch.rpm 然后安装新版的稳定版内核
-yum --enablerepo=elrepo-kernel install kernel-ml -y 安装完毕后使用下面的命令查看是否安装成功。
-rpm -qa | grep kernel 我的显示如下：
-kernel-3.10.0-862.14.4.el7.x86_64 kernel-ml-5.3.8-1.el7.elrepo.x86_64 kernel-3.10.0-1062.4.1.el7.x86_64 kernel-headers-3.10.0-1062.4.1.el7.x86_64 kernel-3.10.0-957.5.1.el7.x86_64 kernel-3.10.0-1062.1.2.el7.x86_64 kernel-tools-3.10.0-1062.4.1.el7.x86_64 kernel-tools-libs-3.10.0-1062.4.1.el7.x86_64 kernel-3.10.0-957.1.3.el7.x86_64 里面kernel-ml-5.3.8-1.el7.elrepo.x86_64就是安装的新版版本内核（你看到这篇教程的时候可能内核版本有变化，随机应变）
-接下来需要设置系统启动顺序，使用下面的命令。
-sudo egrep ^menuentry /etc/grub2.cfg | cut -f 2 -d \&#39; 我的显示如下：
-CentOS Linux (5.3.8-1.el7.elrepo.x86_64) 7 (Core) CentOS Linux (3.10.0-1062.4.1.el7.x86_64) 7 (Core) CentOS Linux (3."><meta itemprop="datePublished" content="2023-07-27T08:34:16+08:00" />
+<meta itemprop="description" content="CentOS7安装新版内核和开启BBR加速"><meta itemprop="datePublished" content="2023-07-27T08:34:16+08:00" />
 <meta itemprop="dateModified" content="2023-07-27T08:34:16+08:00" />
 <meta itemprop="wordCount" content="160">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="CentOS7安装新版内核和开启BBR加速"/>
-<meta name="twitter:description" content="设置安装内核 查看当前服务器的内核版本。
-uname -sr uname命令用于打印当前系统相关信息（内核版本号、硬件架构、主机名称和操作系统类型等）。
--a或--all：显示全部的信息； -m或--machine：显示电脑类型； -n或-nodename：显示在网络上的主机名称； -r或--release：显示操作系统的发行编号； -s或--sysname：显示操作系统名称； -v：显示操作系统的版本； -p或--processor：输出处理器类型或&#34;unknown&#34;； -i或--hardware-platform：输出硬件平台或&#34;unknown&#34;； -o或--operating-system：输出操作系统名称； --help：显示帮助； --version：显示版本信息。 BBR内核要求是4.9&#43;，通常来说你通过上面这个命令出来的内核版本是在3.几。接下来启用 ELRepo 仓库
-rpm --import https://www.elrepo.org/RPM-GPG-KEY-elrepo.org rpm -Uvh https://www.elrepo.org/elrepo-release-7.0-3.el7.elrepo.noarch.rpm 然后安装新版的稳定版内核
-yum --enablerepo=elrepo-kernel install kernel-ml -y 安装完毕后使用下面的命令查看是否安装成功。
-rpm -qa | grep kernel 我的显示如下：
-kernel-3.10.0-862.14.4.el7.x86_64 kernel-ml-5.3.8-1.el7.elrepo.x86_64 kernel-3.10.0-1062.4.1.el7.x86_64 kernel-headers-3.10.0-1062.4.1.el7.x86_64 kernel-3.10.0-957.5.1.el7.x86_64 kernel-3.10.0-1062.1.2.el7.x86_64 kernel-tools-3.10.0-1062.4.1.el7.x86_64 kernel-tools-libs-3.10.0-1062.4.1.el7.x86_64 kernel-3.10.0-957.1.3.el7.x86_64 里面kernel-ml-5.3.8-1.el7.elrepo.x86_64就是安装的新版版本内核（你看到这篇教程的时候可能内核版本有变化，随机应变）
-接下来需要设置系统启动顺序，使用下面的命令。
-sudo egrep ^menuentry /etc/grub2.cfg | cut -f 2 -d \&#39; 我的显示如下：
-CentOS Linux (5.3.8-1.el7.elrepo.x86_64) 7 (Core) CentOS Linux (3.10.0-1062.4.1.el7.x86_64) 7 (Core) CentOS Linux (3."/>
+<meta name="twitter:description" content="CentOS7安装新版内核和开启BBR加速"/>
 
 	
   </head>
@@ -141,6 +105,10 @@ CentOS Linux (5.3.8-1.el7.elrepo.x86_64) 7 (Core) CentOS Linux (3.10.0-1062.4.1.
 
 
       <h1 class="f1 athelas mt3 mb1">CentOS7安装新版内核和开启BBR加速</h1>
+      
+      <p class="tracked">
+        By <strong>kw</strong>
+      </p>
       
       
       

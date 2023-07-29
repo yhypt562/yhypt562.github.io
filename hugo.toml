@@ -2,3 +2,6 @@ baseURL = 'http://blog.tdcloud.xyz/'
 languageCode = 'zh-CN'
 title = 'AI交流'
 theme = 'ananke' 
+[params]
+  author = 'kw'
+  description = "AI交流tdcloud.xyz"

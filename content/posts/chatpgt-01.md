@@ -2,6 +2,11 @@
 title: "ChatGPT原理——驾校“AI教练”教导学员"
 date: 2023-07-27T08:50:29+08:00
 draft: false
+keywords:
+- chatgpt
+- chatgpt原理
+- AI教练
+description: "ChatGPT原理——驾校“AI教练”教导学员"
 ---
 
 

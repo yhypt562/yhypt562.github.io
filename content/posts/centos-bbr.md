@@ -2,6 +2,10 @@
 title: "CentOS7安装新版内核和开启BBR加速"
 date: 2023-07-27T08:34:16+08:00
 draft: false
+keywords:
+- centos7
+- bbr
+description: "CentOS7安装新版内核和开启BBR加速"
 ---
 
 
