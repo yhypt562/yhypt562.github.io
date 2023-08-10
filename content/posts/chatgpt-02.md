@@ -2,7 +2,7 @@
 title: "Chatgpt提示词教程"
 date: 2023-07-27T10:55:29+08:00
 draft: false
-keywords:
+tags:
 - chatgpt
 - 提示词教程
 description: "Chatgpt提示词教程"

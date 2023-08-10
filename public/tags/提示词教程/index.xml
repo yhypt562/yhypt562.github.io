@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>提示词教程 on 免费好用的VPN推荐(2023年翻墙避坑)</title>
+    <link>http://blog.tdcloud.xyz/tags/%E6%8F%90%E7%A4%BA%E8%AF%8D%E6%95%99%E7%A8%8B/</link>
+    <description>Recent content in 提示词教程 on 免费好用的VPN推荐(2023年翻墙避坑)</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Thu, 27 Jul 2023 10:55:29 +0800</lastBuildDate><atom:link href="http://blog.tdcloud.xyz/tags/%E6%8F%90%E7%A4%BA%E8%AF%8D%E6%95%99%E7%A8%8B/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Chatgpt提示词教程</title>
+      <link>http://blog.tdcloud.xyz/posts/chatgpt-02/</link>
+      <pubDate>Thu, 27 Jul 2023 10:55:29 +0800</pubDate>
+      
+      <guid>http://blog.tdcloud.xyz/posts/chatgpt-02/</guid>
+      <description>课程地址 https://www.deeplearning.ai/short-courses/chatgpt-prompt-engineering-for-developers/
+Guideline（提示指南） 在本课程中，您将练习两个提示原则及其相关策略，以便为大型语言模型编写有效的提示。
+设置 加载API密钥和相关的Python库。 import openai import os from dotenv import load_dotenv, find_dotenv _ = load_dotenv(find_dotenv()) openai.api_key = os.getenv(&amp;#39;OPENAI_API_KEY&amp;#39;) def get_completion(prompt, model=&amp;#34;gpt-3.5-turbo&amp;#34;): messages = [{&amp;#34;role&amp;#34;: &amp;#34;user&amp;#34;, &amp;#34;content&amp;#34;: prompt}] response = openai.ChatCompletion.create( model=model, messages=messages, temperature=0, # this is the degree of randomness of the model&amp;#39;s output ) return response.choices[0].message[&amp;#34;content&amp;#34;] 提示词原则 原则 1：编写清晰特定的说明
+原则 2：给模型时间“思考”
+原则 1：编写清晰特定的说明 策略 1：使用特定的分隔符，清楚的指示出输入（指令和待处理的文本）的不同部分 分隔符可以是：
+​```, &amp;#34;&amp;#34;&amp;#34;, &amp;lt; &amp;gt;, `&amp;lt;tag&amp;gt; &amp;lt;/tag&amp;gt;`, `:` 代码
+text = f&amp;#34;&amp;#34;&amp;#34; 您应该通过 \ 表达您希望模型执行的操作 提供清晰且\ 尽可能具体。 \ 这将引导模型达到所需的输出，\ 并减少收到不相关\ 或不正确的反应。 不要混淆写一个 \ 通过编写简短提示来清除提示。 \ 在许多情况下，更长的提示更清晰 \ 和模型的上下文，这可能导致 \ 更详细和相关的输出。 &amp;#34;&amp;#34;&amp;#34; prompt = f&amp;#34;&amp;#34;&amp;#34; 总结由三重反引号分隔的文本 \ 成一个句子。 ​```{text}``` &amp;#34;&amp;#34;&amp;#34; response = get_completion(prompt) print(response) 结果</description>
+    </item>
+    
+  </channel>
+</rss>

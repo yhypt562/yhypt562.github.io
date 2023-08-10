@@ -2,10 +2,13 @@
 title: "CentOS7安装新版内核和开启BBR加速"
 date: 2023-07-27T08:34:16+08:00
 draft: false
-keywords:
-- centos7
-- bbr
-description: "CentOS7安装新版内核和开启BBR加速"
+tags:
+- 免费VPN
+- 免费翻墙
+- 翻墙
+- V2Ray
+- SSR
+description: "加好友，免费翻墙-CentOS7安装新版内核和开启BBR加速"
 ---
 
 

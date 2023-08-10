@@ -1,10 +1,92 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tags on AI交流</title>
+    <title>Tags on 免费好用的VPN推荐(2023年翻墙避坑)</title>
     <link>http://blog.tdcloud.xyz/tags/</link>
-    <description>Recent content in Tags on AI交流</description>
+    <description>Recent content in Tags on 免费好用的VPN推荐(2023年翻墙避坑)</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh-CN</language><atom:link href="http://blog.tdcloud.xyz/tags/index.xml" rel="self" type="application/rss+xml" />
+    <language>zh-CN</language>
+    <lastBuildDate>Thu, 27 Jul 2023 10:55:29 +0800</lastBuildDate><atom:link href="http://blog.tdcloud.xyz/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>chatgpt</title>
+      <link>http://blog.tdcloud.xyz/tags/chatgpt/</link>
+      <pubDate>Thu, 27 Jul 2023 10:55:29 +0800</pubDate>
+      
+      <guid>http://blog.tdcloud.xyz/tags/chatgpt/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>提示词教程</title>
+      <link>http://blog.tdcloud.xyz/tags/%E6%8F%90%E7%A4%BA%E8%AF%8D%E6%95%99%E7%A8%8B/</link>
+      <pubDate>Thu, 27 Jul 2023 10:55:29 +0800</pubDate>
+      
+      <guid>http://blog.tdcloud.xyz/tags/%E6%8F%90%E7%A4%BA%E8%AF%8D%E6%95%99%E7%A8%8B/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>AI教练</title>
+      <link>http://blog.tdcloud.xyz/tags/ai%E6%95%99%E7%BB%83/</link>
+      <pubDate>Thu, 27 Jul 2023 08:50:29 +0800</pubDate>
+      
+      <guid>http://blog.tdcloud.xyz/tags/ai%E6%95%99%E7%BB%83/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>chatgpt原理</title>
+      <link>http://blog.tdcloud.xyz/tags/chatgpt%E5%8E%9F%E7%90%86/</link>
+      <pubDate>Thu, 27 Jul 2023 08:50:29 +0800</pubDate>
+      
+      <guid>http://blog.tdcloud.xyz/tags/chatgpt%E5%8E%9F%E7%90%86/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>SSR</title>
+      <link>http://blog.tdcloud.xyz/tags/ssr/</link>
+      <pubDate>Thu, 27 Jul 2023 08:34:16 +0800</pubDate>
+      
+      <guid>http://blog.tdcloud.xyz/tags/ssr/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>V2Ray</title>
+      <link>http://blog.tdcloud.xyz/tags/v2ray/</link>
+      <pubDate>Thu, 27 Jul 2023 08:34:16 +0800</pubDate>
+      
+      <guid>http://blog.tdcloud.xyz/tags/v2ray/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>免费VPN</title>
+      <link>http://blog.tdcloud.xyz/tags/%E5%85%8D%E8%B4%B9vpn/</link>
+      <pubDate>Thu, 27 Jul 2023 08:34:16 +0800</pubDate>
+      
+      <guid>http://blog.tdcloud.xyz/tags/%E5%85%8D%E8%B4%B9vpn/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>免费翻墙</title>
+      <link>http://blog.tdcloud.xyz/tags/%E5%85%8D%E8%B4%B9%E7%BF%BB%E5%A2%99/</link>
+      <pubDate>Thu, 27 Jul 2023 08:34:16 +0800</pubDate>
+      
+      <guid>http://blog.tdcloud.xyz/tags/%E5%85%8D%E8%B4%B9%E7%BF%BB%E5%A2%99/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>翻墙</title>
+      <link>http://blog.tdcloud.xyz/tags/%E7%BF%BB%E5%A2%99/</link>
+      <pubDate>Thu, 27 Jul 2023 08:34:16 +0800</pubDate>
+      
+      <guid>http://blog.tdcloud.xyz/tags/%E7%BF%BB%E5%A2%99/</guid>
+      <description></description>
+    </item>
+    
   </channel>
 </rss>
