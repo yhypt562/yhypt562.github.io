@@ -8,7 +8,7 @@ tags:
 - 翻墙
 - V2Ray
 - SSR
-description: "加好友，免费翻墙-CentOS7安装新版内核和开启BBR加速"
+description: "加好友，免费翻墙-2023中国翻墙软件VPN推荐以及科学上网避坑，稳定好用。对比SSR机场、V2ray、VPS搭建梯子等科学上网与翻墙软件，中国最新科学上网翻墙梯子VPN下载推荐，访问Chatgpt。"
 ---
 
 

@@ -6,7 +6,60 @@
     <description>Recent content in 免费翻墙 on 免费好用的VPN推荐(2023年翻墙避坑)</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Thu, 27 Jul 2023 08:34:16 +0800</lastBuildDate><atom:link href="http://blog.tdcloud.xyz/tags/%E5%85%8D%E8%B4%B9%E7%BF%BB%E5%A2%99/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 27 Jul 2023 10:55:29 +0800</lastBuildDate><atom:link href="http://blog.tdcloud.xyz/tags/%E5%85%8D%E8%B4%B9%E7%BF%BB%E5%A2%99/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Chatgpt提示词教程</title>
+      <link>http://blog.tdcloud.xyz/posts/chatgpt-02/</link>
+      <pubDate>Thu, 27 Jul 2023 10:55:29 +0800</pubDate>
+      
+      <guid>http://blog.tdcloud.xyz/posts/chatgpt-02/</guid>
+      <description>课程地址 https://www.deeplearning.ai/short-courses/chatgpt-prompt-engineering-for-developers/
+Guideline（提示指南） 在本课程中，您将练习两个提示原则及其相关策略，以便为大型语言模型编写有效的提示。
+设置 加载API密钥和相关的Python库。 import openai import os from dotenv import load_dotenv, find_dotenv _ = load_dotenv(find_dotenv()) openai.api_key = os.getenv(&amp;#39;OPENAI_API_KEY&amp;#39;) def get_completion(prompt, model=&amp;#34;gpt-3.5-turbo&amp;#34;): messages = [{&amp;#34;role&amp;#34;: &amp;#34;user&amp;#34;, &amp;#34;content&amp;#34;: prompt}] response = openai.ChatCompletion.create( model=model, messages=messages, temperature=0, # this is the degree of randomness of the model&amp;#39;s output ) return response.choices[0].message[&amp;#34;content&amp;#34;] 提示词原则 原则 1：编写清晰特定的说明
+原则 2：给模型时间“思考”
+原则 1：编写清晰特定的说明 策略 1：使用特定的分隔符，清楚的指示出输入（指令和待处理的文本）的不同部分 分隔符可以是：
+​```, &amp;#34;&amp;#34;&amp;#34;, &amp;lt; &amp;gt;, `&amp;lt;tag&amp;gt; &amp;lt;/tag&amp;gt;`, `:` 代码
+text = f&amp;#34;&amp;#34;&amp;#34; 您应该通过 \ 表达您希望模型执行的操作 提供清晰且\ 尽可能具体。 \ 这将引导模型达到所需的输出，\ 并减少收到不相关\ 或不正确的反应。 不要混淆写一个 \ 通过编写简短提示来清除提示。 \ 在许多情况下，更长的提示更清晰 \ 和模型的上下文，这可能导致 \ 更详细和相关的输出。 &amp;#34;&amp;#34;&amp;#34; prompt = f&amp;#34;&amp;#34;&amp;#34; 总结由三重反引号分隔的文本 \ 成一个句子。 ​```{text}``` &amp;#34;&amp;#34;&amp;#34; response = get_completion(prompt) print(response) 结果</description>
+    </item>
+    
+    <item>
+      <title>ChatGPT原理——驾校“AI教练”教导学员</title>
+      <link>http://blog.tdcloud.xyz/posts/chatpgt-01/</link>
+      <pubDate>Thu, 27 Jul 2023 08:50:29 +0800</pubDate>
+      
+      <guid>http://blog.tdcloud.xyz/posts/chatpgt-01/</guid>
+      <description>最近ChatGPT是非常火啊，我一个“爱学习的”大码程序员都怦然心动，来蹭热度了。我赶紧就把 OpenAI 以往的 GPT-N 系列论文又翻出来，认真领会大语言模型（Large Language Model）的强大之处。经过一个多月的认真研究，查阅了几十篇相关的论文，终于在写这篇文章之前，熟练掌握了26个英文字母。
+前段时间ChatGPT火起来后，就去看过很多大V的文章，简单了解了这个AI是咋回事。大部分人都在说GPT还是有很多不足，例如：
+回答无效问题：它只是根据之前的训练数据进行模式匹配和预测，随机抽取概率高的文字来回答，而没有真正理解人类想要的答案。 缺乏可解释性：它很难进行深入的逻辑推理或解决需要多步骤操作的问题。因此，对于这类问题，GPT-3的回答可能不准确或含糊。 提供虚假回答：它的训练数据中可能包含错误、虚假或误导性的信息，因此它可能会生成不准确或有误导性的回答。 内容偏见问题：如果在训练数据中接触到偏见或歧视性的内容，它可能在生成回答时重复或放大这些偏见。这可能导致生成具有偏见或不公平观点的回答。 这些问题是如何产生的呢？下面我们带着问题，一步一步来看ChatGPT具体如何来做的。
+为什么会有这样的问题？——无监督预训练（网上自学） 首先我们来看看为什么会出现这些问题，ChatGPT的核心是LLM，也就是大家常说到的大语言模型，而这种模型的核心就是为给定文本计算出后面出现的字的概率，举个通熟易懂的例子，如下：
+编辑切换为居中
+LLM大语言模型特点
+输入一句“隔壁老”，它后面可能的下一个字是“王”、“张”或“李”。因为在前面的学习训练的结果中，这些字词出现的概率相对较高；语言模型实际上能够评估给定先前序列的每个可能词的可能性。例如隔壁老王，应该概率会比较高。回家看看你家有几个隔壁老王。哈哈😃
+我再举几个例子：
+寡妇门前_________ 大概率会是：“寡妇门前是非多” 天使的脸蛋，魔鬼的_____ 大概率会是：“魔鬼的身材”
+那我们LLM就只能做文字接龙了吗？那这样的模型是不是就只有这一点价值了呢？也不能这样说，可以通过一些小技巧，也是可以得到一些答案的。例如下面的场景：
+请问“四川最高的山是哪一座？”让GPT给出这句话后面的一个字：“贡”；然后再让GPT给出“四川最高的山是哪一座？贡”这句话的的后面一个字，可能是：“嘎”；接着让GPT给出“四川最高的山是哪一座？贡嘎”后面一个字，可能大概率就是“山”了。
+编辑切换为居中
+提问回答过程
+经过这样一个过程，还是有很大概率得出人类想要的答案的。
+ChatGPT如何改进的 前面提到了GPT是一个预测后续概率的模型，GPT也不知道哪些回答是人类想要的。比如问 GPT “四川省最高的山是哪座山？”，可能的回答就有多种，例如：“我也不知道，你能告诉我吗”、“贡嘎山”、“四姑娘山”或“你猜猜看” 都是上下文通顺的回答，但很显然 “贡嘎山”才 是更符合人类期望的回答。对于这种情况，GPT就只能随机选择一个或是几个答案了。所以OpenAI的方案是采用RLHF（人类反馈的强化学习）来进行训练，具体包括以下三个不同的步骤：
+编辑切换为居中
+ChatGPT训练步骤
+具体步骤：
+收集数据并进行监督学习（“老司机”掌握方向） 收集对比数据并训练奖励模型（给AI找个“教练”） 使用 PPO 强化学习算法针对奖励模型进行优化（AI“教练”指导 AI） 第一步：“老司机”掌握方向（有监督训练初始模型） ChatGPT前一阶段，是采用无监督训练的，采用了网上的没有经过人类标记处理的数据，直接对ChatGPT进行训练。这样得到的模型，由于这些数据的来源五花八门，造成了回答不能满足人类需求的情况。
+为了解决这种情况，研究人员让人类“AI培训师”从问题集中的抽取一些问题，丢给GPT3.5，让它给出答案。“AI培训师”再根据GPT3.5给出答案，然后进行人工修正，再把这些人类修正认可的问题和答案丢给 GPT3.5去学习。通过这种有训练的方法，我们就得到一个简易版的 ChatGPT 模型。也就是SFT，三伏天模型。😄
+编辑切换为居中
+收集数据并进行监督学习过程
+讲到这里，就有人会问了，“AI培训师”毕竟是少数，怎么能穷尽所有的问题呢？实际上只需要提供数万条数据给AI就行，因为 GPT3.5 本来就有能力生成出正确答案，只是它不知道哪些答案是人类真正需要的。
+第二步：给AI找个“教练”（收集对比数据并训练奖励模型） 编辑切换为居中
+AI 教练
+针对上一步，只要“AI培训师”人数足够多，理论上已经可以达到目的：训练出效果很好且符合人类偏好的模型。
+若是全用人工，就算是能全部标记完，成本也是天文数字。这绝对不是一个好的解决方案。那又要通过什么办法来解决的呢？
+大家记得前几年轰动一时的围棋人工智能 AlphaGo吧，它是通过海量的自我对弈优化模型，最终超越人类；那我们能不能让 GPT也通过大量对话练习提升其回答问题的能力呢？答案是可以，但还缺少一个来判断好坏的裁判或是老师。
+对于AlphaGo下围棋来说，胜负是通过围棋的规则来决定；但 GPT 回答一个问题，那谁来告诉 GPT 回答的好坏呢？要是也用人来进行判断，那就回到了刚刚的问题，不可能全部答案都由人来进行判断。
+如果有个能辨别 GPT 回答好坏的“教练模型”（即 Reward 模型），并按照人类的评分标准对 GPT 所给出的答案进行评分，那不就能帮助 GPT 的回答更加符合人类的偏好了么？</description>
+    </item>
+    
     <item>
       <title>CentOS7安装新版内核和开启BBR加速</title>
       <link>http://blog.tdcloud.xyz/posts/centos-bbr/</link>
